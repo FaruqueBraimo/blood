@@ -1,0 +1,122 @@
+
+<html>
+<head>
+    <title>The Materialize Selects Example</title>
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1">
+    <link rel = "stylesheet"
+          href = "https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel = "stylesheet"
+          href = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+    <script type = "text/javascript"
+            src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
+    </script>
+
+    <script>
+         $(document).ready(function() {
+            $('select').material_select();
+             $('.datepicker').datepicker();
+
+         });
+
+      </script>
+</head>
+
+<body class = "container">
+
+
+
+<div class = "container">
+    <form class = "col s12" method="post">
+
+
+
+        <div class="row">
+            <div class="input-field col s6">
+                <i class="material-icons prefix">account_circle</i>
+                <input  name="nome"  id="first_name"  type="text" class="validate">
+                <label for="first_name">Nome</label>
+            </div>
+
+            <div class="input-field col s6">
+                <i class="material-icons prefix">account_circle</i>
+                <input id="last_name"   name="apelido"  type="text" class="validate">
+                <label for="last_name"> Apelido</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s6">
+                <i class="material-icons prefix">phone</i>
+
+                <input id="telefone" type="tel"  name="telefone" class="validate">
+                <label for="telefone">Telefone</label>
+            </div>
+
+            <div class="input-field col s6">
+                <i class="material-icons prefix">drafts</i>
+
+                <input id="email" type="email" class="validate" name="email">
+                <label for="email">Email</label>
+            </div>
+
+        </div>
+
+
+
+            <label> Sexo </label>
+            <select name="sexo">
+                <option value = "" disabled selected>Selecione o sexo</option>
+                <option value = "1">Masculino</option>
+                <option value = "2">Feminino</option>
+                <option value = "3">Outro</option>
+            </select>
+
+
+            <label> Grupo Sanguineo </label>
+            <select name="sexo">
+                <option value = "" disabled selected>Selecione o grupo</option>
+                <Option value="A" >A-</Option>
+                <Option value="A+" >A+</Option>
+                <Option value="A+">B+</Option>
+                <Option value="A+" >B-</Option>
+                <Option value="A+" >AB+</Option>
+                <Option value="A+" >O</Option>
+
+            </select>
+
+
+
+
+        <div class="row">
+
+            <div class="input-field col s6">
+                <i class="material-icons prefix">account_balance</i>
+                <input id="endereco" type="tel" class="validate">
+                <label for="endereco">Endereco</label>
+
+            </div>
+            <label>Data de Nacimento</label>
+                      <div class="input-field col s6">
+                          <i class="material-icons prefix">date_range</i>
+                          <input type = "date" class = "datepicker" />
+                      </div>
+
+
+            </div>
+
+
+
+
+
+        <button class="btn waves-effect waves-light" type="submit" name="action">Submeter
+            <i class="material-icons right"></i>
+        </button>
+
+
+
+
+    </form>
+</div>
+</body>
+</html>
