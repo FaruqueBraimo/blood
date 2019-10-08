@@ -12,9 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 
-@Controller
-public class DadorController {
 
+@RestController
+@RequestMapping("/api/v1")
+public class DadorController {
 @Autowired
 private DadorRepository dr;
 
