@@ -1,29 +1,51 @@
 package com.OptimizationBlood.blood.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+import javax.persistence.*;
+import javax.validation.Valid;
+import java.util.List;
 
 @Entity
+@ApiModel(description = "Todos os detalhes sobre o dador . ")
 public class Dador  {
 
     private static final  long serialVersionUID =1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
- private long codigo ;
+    @ApiModelProperty(notes = "Este é o ID  do dador e ele é gerado automaticamente")
+
+    @GeneratedValue()
+     private long codigo ;
+
+    public long getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(long codigo) {
+        this.codigo = codigo;
+    }
+    @ApiModelProperty(notes = "Este é o nome  do dador")
 
     private String nome;
+    @ApiModelProperty(notes = "Este é o apelido  do dador")
+
     private String Apelido;
     private String endereco;
     private String sexo;
     private int telefone;
     private String email;
 
+
+
+
+
     public Dador() {
 
     }
+
+
 
     private     String grupoSanguineo;
 

@@ -5,4 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface DadorRepository extends JpaRepository<Dador,Integer>{
 
+    Dador findByCodigo(long codigo);
+
 }
