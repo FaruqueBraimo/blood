@@ -18,6 +18,7 @@ import java.util.List;
 @RestController
 @RequestMapping( value = "/api")
 @Api(value = " Sistema de banco de sangue", description = "Este recurso é responsaval por todas as operacoes sobre dadores" )
+ @CrossOrigin(origins = "*")
 
 public class DadorResource {
 

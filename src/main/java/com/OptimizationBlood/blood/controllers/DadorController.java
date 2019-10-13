@@ -13,8 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 
-@RestController
-@RequestMapping("/api/v1")
+@Controller
 public class DadorController {
 @Autowired
 private DadorRepository dr;
