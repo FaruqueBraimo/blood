@@ -16,13 +16,11 @@ import java.util.List;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping( value = "/api")
+@RequestMapping( value = "api")
 @Api(value = " Sistema de banco de sangue", description = "Este recurso é responsaval por todas as operacoes sobre dadores" )
 
-public class DadorResource {
+public class SangueResource {
 
-    @Autowired
-    private DadorRepository dr;
     @Autowired
     private SangueRepository sr;
 
@@ -33,43 +31,45 @@ public class DadorResource {
             @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
             @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
     })
-    @GetMapping("/dadores")
-    public List<Dador> listar(){
+    @GetMapping("/sangue")
+    public List<Sangue> listar(){
 
-        return dr.findAll();
-
-    }
-
-    @GetMapping("dador/{codigo}")
-    @ApiOperation(value="retorna um certo dador")
-
-    public Dador listarDadorUnico(@PathVariable(value = "codigo") long codigo){
-
-        return dr.findByCodigo(codigo);
+        return sr.findAll();
 
     }
 
-    @PostMapping("dador/{codigo}")
-    @ApiOperation(value="grava dadores")
-    public Dador guardar(@RequestBody Dador dador){
+    @GetMapping("sangue/{codigo}")
+    @ApiOperation(value="retorna um certo tipo de sangue")
 
-        return dr.save(dador);
+    public Sangue pesquisar(@PathVariable(value = "codigo") long codigo){
+
+        return sr.findByCodigo(codigo);
+
     }
 
-   @DeleteMapping("/dador")
-   @ApiOperation(value="remove um certo dador")
-   public void deletar(@RequestBody  Dador dador){
+    @PostMapping("/sangue")
 
-         dr.delete(dador);
-   }
+    @ApiOperation(value="grava sangue")
+    public Sangue guardar(@RequestBody Sangue sangue){
 
-   @PutMapping("/dador")
-   @ApiOperation(value="Edita um certo dador")
+        return sr.save(sangue);
+    }
 
-   public  Dador editar(@RequestBody Dador dador){
-        return dr.save(dador);
 
-   }
+    @DeleteMapping("/sangue")
+    @ApiOperation(value="remove um certo tipo de sanguue")
+    public void deletar(@RequestBody  Sangue sangue){
+
+        sr.delete(sangue);
+    }
+
+    @PutMapping("/sangue")
+    @ApiOperation(value="Edita um certo tipo de sangue")
+
+    public  Sangue editar(@RequestBody Sangue sangue){
+        return sr.save(sangue);
+
+    }
 
 
 
