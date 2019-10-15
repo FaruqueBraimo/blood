@@ -25,13 +25,36 @@ private LocalDate Data_triagem;
 private String Observacoes;
 private String Temperatura;
 
-@OneToOne
+@OneToOne(mappedBy = "triagem" )
 private Doacao doacao;
 
-    @OneToOne
-    private Agendamento agendamento;
+    @ManyToOne
+    @JoinColumn(name = "sangue_id")
+private Agendamento agendamento;
 
+    public Dador getDador() {
+        return dador;
+    }
 
+    public void setDador(Dador dador) {
+        this.dador = dador;
+    }
+
+    public Doacao getDoacao() {
+        return doacao;
+    }
+
+    public void setDoacao(Doacao doacao) {
+        this.doacao = doacao;
+    }
+
+    public Agendamento getAgendamento() {
+        return agendamento;
+    }
+
+    public void setAgendamento(Agendamento agendamento) {
+        this.agendamento = agendamento;
+    }
 
     public int getCodigo() {
         return codigo;

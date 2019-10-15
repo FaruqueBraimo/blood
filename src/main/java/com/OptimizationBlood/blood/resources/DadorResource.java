@@ -3,6 +3,7 @@ package com.OptimizationBlood.blood.resources;
 
 import com.OptimizationBlood.blood.models.Dador;
 import com.OptimizationBlood.blood.models.Sangue;
+import com.OptimizationBlood.blood.models.Triagem;
 import com.OptimizationBlood.blood.repository.DadorRepository;
 import com.OptimizationBlood.blood.repository.SangueRepository;
 import io.swagger.annotations.Api;
@@ -14,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin("*")
 @RestController
 @RequestMapping( value = "/api")
 @Api(value = " Sistema de banco de sangue", description = "Este recurso é responsaval por todas as operacoes sobre dadores" )
@@ -51,18 +51,22 @@ public class DadorResource {
     }
 
     @PostMapping("dador/{codigo}")
-    @ApiOperation(value="grava dadores")
-    public Dador guardar(@RequestBody Dador dador){
+    public Dador guardar(@PathVariable(value = "codigo") int codigo , @RequestBody Dador  dador){
 
-        return dr.save(dador);
+        Sangue sangue = sr.findByCodigo(codigo);
+         dador.setSangue(sangue);
+        dr.save(dador);
+        return dador;
     }
 
-   @DeleteMapping("/dador")
+    @DeleteMapping("dador/{codigo}")
    @ApiOperation(value="remove um certo dador")
-   public void deletar(@RequestBody  Dador dador){
-
-         dr.delete(dador);
+   public Dador deletar(@PathVariable(value = "codigo") int codigo, @RequestBody  Dador dador){
+        dador = dr.findByCodigo(codigo);
+        dr.delete(dador);
+        return dador;
    }
+
 
    @PutMapping("/dador")
    @ApiOperation(value="Edita um certo dador")
@@ -71,6 +75,7 @@ public class DadorResource {
         return dr.save(dador);
 
    }
+
 
 
 

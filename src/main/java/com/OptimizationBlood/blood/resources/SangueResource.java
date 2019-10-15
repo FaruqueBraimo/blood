@@ -41,7 +41,7 @@ public class SangueResource {
     @GetMapping("sangue/{codigo}")
     @ApiOperation(value="retorna um certo tipo de sangue")
 
-    public Sangue pesquisar(@PathVariable(value = "codigo") long codigo){
+    public Sangue pesquisar(@PathVariable(value = "codigo") int codigo){
 
         return sr.findByCodigo(codigo);
 

@@ -1,8 +1,10 @@
 package com.OptimizationBlood.blood.resources;
 
 
+import com.OptimizationBlood.blood.models.Agendamento;
 import com.OptimizationBlood.blood.models.Dador;
 import com.OptimizationBlood.blood.models.Triagem;
+import com.OptimizationBlood.blood.repository.AgendamentoRepository;
 import com.OptimizationBlood.blood.repository.DadorRepository;
 import com.OptimizationBlood.blood.repository.TriagemRepository;
 import io.swagger.annotations.Api;
@@ -10,6 +12,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -25,28 +28,38 @@ public class TriagemResource {
     @Autowired
     private DadorRepository dr;
 
+    @Autowired
+    private AgendamentoRepository ar;
 
 
     @PostMapping("triagem/{codigo}")
-    public Triagem guardar(@PathVariable(value = "codigo") long codigo , @RequestBody Triagem triagem){
-
-        Dador dador = dr.findByCodigo(codigo);
-        triagem.setDadores(dador);
+    public Triagem guardar(@PathVariable(value = "codigo") int codigo , @RequestBody Triagem triagem){
+        Agendamento agendamento = ar.findByCodigo(codigo);
+        triagem.setAgendamento(agendamento);
         tr.save(triagem);
          return triagem;
     }
 
-    @GetMapping("/triagem")
-    public List<Triagem> listar(){
+    @GetMapping("/triagens")
+    public  String listar(){
 
-        return tr.findAll();
+        List<Triagem> tra = new ArrayList<>();
+        tra = tr.findAll();
 
+        String nome = null;
+        for ( Triagem d : tra){
+
+            nome = d.getDadores().getEmail();
+
+        }
+
+         return  nome;
     }
 
     @GetMapping("triagem/{codigo}")
     @ApiOperation(value="retorna uma certa triagem")
 
-    public Dador pesquisar(@PathVariable(value = "codigo") long codigo){
+    public Dador pesquisar(@PathVariable(value = "codigo") int codigo){
 
         return dr.findByCodigo(codigo);
 

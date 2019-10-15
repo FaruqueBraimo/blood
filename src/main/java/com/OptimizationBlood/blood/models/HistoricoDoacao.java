@@ -4,11 +4,11 @@ import org.apache.tomcat.jni.Local;
 
 import java.time.LocalDate;
 
-public class HistoricoDoacoes {
+public class HistoricoDoacao {
 
 
     private  int id;
     private int numero_total_doacoes;
-    private LocalDate  ultima_data_doada;
+    private  LocalDate  ultima_data_doada;
 
 }

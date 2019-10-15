@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TriagemRepository extends JpaRepository<Triagem,Integer> {
 
-    Triagem findByCodigo(long codigo);
+    Triagem findByCodigo(int codigo);
 
 
 }

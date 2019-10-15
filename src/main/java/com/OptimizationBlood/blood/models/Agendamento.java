@@ -5,13 +5,14 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Agendamento {
 
      @Id
      @GeneratedValue
-     private int id;
+     private int codigo;
      private Date data_agendada;
      private LocalDate data_marcada;
      private LocalTime hora;
@@ -21,16 +22,23 @@ public class Agendamento {
     @JoinColumn (name = "dador_id")
     private Dador dador;
 
+     @OneToMany(mappedBy = "agendamento")
+     private List<Triagem> triagem;
 
-     @OneToOne
-     private Triagem triagem;
-
-    public int getId() {
-        return id;
+    public int getCodigo() {
+        return codigo;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public List<Triagem> getTriagem() {
+        return triagem;
+    }
+
+    public void setTriagem(List<Triagem> triagem) {
+        this.triagem = triagem;
+    }
+
+    public void setCodigo(int id) {
+        this.codigo = id;
     }
 
     public Dador getDador() {
