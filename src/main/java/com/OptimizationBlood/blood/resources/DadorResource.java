@@ -19,7 +19,7 @@ import java.util.List;
 @RestController
 @RequestMapping( value = "/api")
 @Api(value = " Sistema de banco de sangue", description = "Este recurso é responsaval por todas as operacoes sobre dadores" )
- @CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*")
 
 public class DadorResource {
 
@@ -62,8 +62,8 @@ public class DadorResource {
 
     @DeleteMapping("dador/{codigo}")
    @ApiOperation(value="remove um certo dador")
-   public Dador deletar(@PathVariable(value = "codigo") int codigo, @RequestBody  Dador dador){
-        dador = dr.findByCodigo(codigo);
+   public Dador deletar(@PathVariable(value = "codigo") int codigo){
+        Dador dador = dr.findByCodigo(codigo);
         dr.delete(dador);
         return dador;
    }
@@ -71,7 +71,6 @@ public class DadorResource {
 
    @PutMapping("/dador")
    @ApiOperation(value="Edita um certo dador")
-
    public  Dador editar(@RequestBody Dador dador){
         return dr.save(dador);
 
