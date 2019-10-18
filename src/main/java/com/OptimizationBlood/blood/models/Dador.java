@@ -36,7 +36,7 @@ public class Dador  {
     private String sexo;
     private int telefone;
     private String email;
-    @JsonIgnore
+   // @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "sangue_id")
     private Sangue sangue;
