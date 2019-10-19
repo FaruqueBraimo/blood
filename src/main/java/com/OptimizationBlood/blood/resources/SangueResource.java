@@ -14,11 +14,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin("*")
 @RestController
 @RequestMapping( value = "api")
 @Api(value = " Sistema de banco de sangue", description = "Este recurso é responsaval por todas as operacoes sobre dadores" )
-
+@CrossOrigin("*")
 public class SangueResource {
 
     @Autowired
