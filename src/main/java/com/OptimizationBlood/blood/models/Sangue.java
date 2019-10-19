@@ -1,6 +1,8 @@
 package com.OptimizationBlood.blood.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,6 +20,7 @@ public class Sangue {
     private String Descricao;
 
     @OneToMany(mappedBy = "sangue")
+    @JsonManagedReference
     private List<Dador> dadores;
 
     public int getCodigo() {

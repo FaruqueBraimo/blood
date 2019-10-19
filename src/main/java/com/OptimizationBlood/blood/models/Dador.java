@@ -1,5 +1,6 @@
 package com.OptimizationBlood.blood.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -36,8 +37,10 @@ public class Dador  {
     private String sexo;
     private int telefone;
     private String email;
-    @JsonIgnore
+    //@JsonIgnore
     @ManyToOne
+
+    @JsonBackReference
     @JoinColumn(name = "sangue_id")
     private Sangue sangue;
     private int numeroDeDoacoes;
