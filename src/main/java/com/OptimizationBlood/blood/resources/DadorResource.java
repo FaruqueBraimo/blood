@@ -77,6 +77,15 @@ public class DadorResource {
    }
 
 
+    @GetMapping("/d")
+    @ApiOperation(value="Edita um certo dador")
+    public  int pes(){
+        return dr.getDador();
+
+    }
+
+
+
 
 
 }
