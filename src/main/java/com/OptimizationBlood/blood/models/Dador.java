@@ -37,7 +37,7 @@ public class Dador  {
     private String sexo;
     private int telefone;
     private String email;
-    //@JsonIgnore
+
     @ManyToOne
 
     @JsonBackReference
