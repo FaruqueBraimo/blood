@@ -39,8 +39,7 @@ public class Dador  {
     private String email;
 
     @ManyToOne
-
-    @JsonBackReference
+    @JsonManagedReference
     @JoinColumn(name = "sangue_id")
     private Sangue sangue;
     private int numeroDeDoacoes;
