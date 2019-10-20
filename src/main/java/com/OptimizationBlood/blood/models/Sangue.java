@@ -20,7 +20,7 @@ public class Sangue {
     private String Descricao;
 
     @OneToMany(mappedBy = "sangue")
-    @JsonManagedReference
+    @JsonBackReference
     private List<Dador> dadores;
 
     public int getCodigo() {
