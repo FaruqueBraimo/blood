@@ -16,7 +16,7 @@ public class Agendamento {
      @GeneratedValue
      private int codigo;
 
-    @JsonFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern="yyyy/MM/dd")
      private LocalDate  data_agendada;
      private Date data_marcada;
      private String hora;
