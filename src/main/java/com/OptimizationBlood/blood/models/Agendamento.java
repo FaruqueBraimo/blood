@@ -1,6 +1,8 @@
 package com.OptimizationBlood.blood.models;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -14,7 +16,8 @@ public class Agendamento {
      @GeneratedValue
      private int codigo;
 
-     private Date data_agendada;
+    @JsonFormat(pattern="yyyy-MM-dd")
+     private LocalDate  data_agendada;
      private Date data_marcada;
      private String hora;
      private String descricao;
@@ -34,11 +37,11 @@ public class Agendamento {
         this.codigo = codigo;
     }
 
-    public Date getData_agendada() {
+    public LocalDate getData_agendada() {
         return data_agendada;
     }
 
-    public void setData_agendada(Date data_agendada) {
+    public void setData_agendada(LocalDate data_agendada) {
         this.data_agendada = data_agendada;
     }
 
