@@ -1,5 +1,6 @@
 package com.produtos.apirest.config;
 
+import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,35 +16,29 @@ import springfox.documentation.spring.web.plugins.Docket;
 import static springfox.documentation.builders.PathSelectors.regex;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
-
     @Bean
-    public Docket productApi() {
+    public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.Optimization.Blood.resources"))
-                .paths(regex("api.*"))
+                .apis(RequestHandlerSelectors.basePackage("com.OptimizationBlood.blood.resources"))
+                .paths(PathSelectors.ant("/api/*"))
                 .build()
-                .apiInfo(metaInfo());
+                .apiInfo(apiInfo());
     }
 
-    private ApiInfo metaInfo() {
-
-        ApiInfo apiInfo = new ApiInfo(
-                "Produtos API REST",
-                "API REST de cadastro de produtos.",
-                "1.0",
-                "Terms of Service",
-                new Contact("Michelli Brito", "https://www.youtube.com/michellibrito",
-                        "michellidibrito@gmail.com"),
-                "Apache License Version 2.0",
-                "https://www.apache.org/licesen.html", new ArrayList<VendorExtension>()
-        );
-
-        return apiInfo;
+    private ApiInfo apiInfo() {
+        return new ApiInfo(
+                "My REST API",
+                "Some custom description of API.",
+                "API TOS",
+                "Terms of service",
+                new Contact("John Doe", "www.example.com", "myeaddress@company.com"),
+                "License of API", "API license URL", Collections.emptyList());
     }
 
 }
