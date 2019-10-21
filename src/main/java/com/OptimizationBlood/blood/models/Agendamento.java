@@ -13,8 +13,12 @@ public class Agendamento {
      @Id
      @GeneratedValue
      private int codigo;
+     @DateTimeFormat(iso = DateTimeFormatter.ofPattern("yyyy/MM/dd"))
+     @JsonFormat(pattern = "YYYY/MM/dd")
      private Date data_agendada;
      private LocalDate data_marcada;
+       @DateTimeFormat(iso = DateTimeFormatter.ofPattern("yyyy/MM/dd"))
+     @JsonFormat(pattern = "YYYY/MM/dd")
      private LocalTime hora;
      private String descricao;
 
