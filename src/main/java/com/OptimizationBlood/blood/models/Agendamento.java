@@ -13,13 +13,10 @@ public class Agendamento {
      @Id
      @GeneratedValue
      private int codigo;
-     @DateTimeFormat(iso = DateTimeFormatter.ofPattern("yyyy/MM/dd"))
-     @JsonFormat(pattern = "YYYY/MM/dd")
+
      private Date data_agendada;
-     private LocalDate data_marcada;
-       @DateTimeFormat(iso = DateTimeFormatter.ofPattern("yyyy/MM/dd"))
-     @JsonFormat(pattern = "YYYY/MM/dd")
-     private LocalTime hora;
+     private Date data_marcada;
+     private String hora;
      private String descricao;
 
      @ManyToOne
@@ -33,24 +30,8 @@ public class Agendamento {
         return codigo;
     }
 
-    public List<Triagem> getTriagem() {
-        return triagem;
-    }
-
-    public void setTriagem(List<Triagem> triagem) {
-        this.triagem = triagem;
-    }
-
-    public void setCodigo(int id) {
-        this.codigo = id;
-    }
-
-    public Dador getDador() {
-        return dador;
-    }
-
-    public void setDador(Dador dador) {
-        this.dador = dador;
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
     public Date getData_agendada() {
@@ -61,19 +42,19 @@ public class Agendamento {
         this.data_agendada = data_agendada;
     }
 
-    public LocalDate getData_marcada() {
+    public Date getData_marcada() {
         return data_marcada;
     }
 
-    public void setData_marcada(LocalDate data_marcada) {
+    public void setData_marcada(Date data_marcada) {
         this.data_marcada = data_marcada;
     }
 
-    public LocalTime getHora() {
+    public String getHora() {
         return hora;
     }
 
-    public void setHora(LocalTime hora) {
+    public void setHora(String hora) {
         this.hora = hora;
     }
 
@@ -83,5 +64,21 @@ public class Agendamento {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public Dador getDador() {
+        return dador;
+    }
+
+    public void setDador(Dador dador) {
+        this.dador = dador;
+    }
+
+    public List<Triagem> getTriagem() {
+        return triagem;
+    }
+
+    public void setTriagem(List<Triagem> triagem) {
+        this.triagem = triagem;
     }
 }
