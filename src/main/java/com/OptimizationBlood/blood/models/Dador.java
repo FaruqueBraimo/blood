@@ -1,11 +1,12 @@
 package com.OptimizationBlood.blood.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -51,6 +52,40 @@ public class Dador  {
     private String situacaoAptidao;
     private String Provincia;
     private String FatorRH;
+    @JsonFormat(pattern="yyyy/MM/dd")
+    private LocalDate data_nasc;
+
+    public LocalDate getData_nasc() {
+        return data_nasc;
+    }
+
+    public void setData_nasc(LocalDate data_nasc) {
+        this.data_nasc = data_nasc;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public List<Triagem> getTriagem() {
+        return triagem;
+    }
+
+    public void setTriagem(List<Triagem> triagem) {
+        this.triagem = triagem;
+    }
+
+    public List<Agendamento> getAgendamento() {
+        return agendamento;
+    }
+
+    public void setAgendamento(List<Agendamento> agendamento) {
+        this.agendamento = agendamento;
+    }
 
     @OneToOne
     private Usuario usuario;

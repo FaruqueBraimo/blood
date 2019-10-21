@@ -1,6 +1,8 @@
 package com.OptimizationBlood.blood.models;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -19,7 +21,10 @@ public class Doacao {
 
     @OneToOne()
     private Triagem triagem;
+    @JsonFormat(pattern="yyyy/MM/dd")
     private LocalDate data_coletada;
+    
+    @JsonFormat(pattern="HH:mm")
     private LocalTime hora_coletada;
     private String volume_coletado;
     private String Reacao;

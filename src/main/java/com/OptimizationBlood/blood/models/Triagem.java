@@ -21,6 +21,7 @@ private String pressao_arterial;
 private String peso;
 private String altura;
 private String resultado_triagem;
+
 private LocalDate Data_triagem;
 private String Observacoes;
 private String Temperatura;
