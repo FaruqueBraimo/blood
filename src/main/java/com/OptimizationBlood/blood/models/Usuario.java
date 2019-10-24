@@ -13,15 +13,19 @@ public class Usuario {
     @Id
     @GeneratedValue
     private  int id;
-//    @OneToOne
-//    private  Dador dador;
-    private  LocalDate data_criado;
-
     @OneToOne
     private  Privilegios privilegios;
-
     private String password;
     private String email;
+    private LocalDate ultima_vez_logado;
+
+    public LocalDate getUltima_vez_logado() {
+        return ultima_vez_logado;
+    }
+
+    public void setUltima_vez_logado(LocalDate ultima_vez_logado) {
+        this.ultima_vez_logado = ultima_vez_logado;
+    }
 
     public int getId() {
         return id;
@@ -31,21 +35,7 @@ public class Usuario {
         this.id = id;
     }
 
-//    public Dador getDador() {
-//        return dador;
-//    }
-//
-//    public void setDador(Dador dador) {
-//        this.dador = dador;
-//    }
 
-    public LocalDate getData_criado() {
-        return data_criado;
-    }
-
-    public void setData_criado(LocalDate data_criado) {
-        this.data_criado = data_criado;
-    }
 
     public Privilegios getPrivilegios() {
         return privilegios;

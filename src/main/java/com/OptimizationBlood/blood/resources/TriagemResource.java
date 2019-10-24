@@ -34,8 +34,8 @@ public class TriagemResource {
 
     @PostMapping("triagem/{codigo}")
     public Triagem guardar(@PathVariable(value = "codigo") int codigo , @RequestBody Triagem triagem){
-//        Agendamento agendamento = ar.findByCodigo(codigo);
-////        triagem.setAgendamento(agendamento);
+        Agendamento agendamento = ar.findByCodigo(codigo);
+        triagem.setAgendamento(agendamento);
         tr.save(triagem);
          return triagem;
     }

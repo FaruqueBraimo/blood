@@ -3,10 +3,7 @@ package com.OptimizationBlood.blood.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -19,7 +16,8 @@ public class Doacao {
 
     private String numero_bolsa;
 
-    @OneToOne()
+    @OneToOne
+    @JoinColumn(name="triagem_id")
     private Triagem triagem;
     @JsonFormat(pattern="yyyy/MM/dd")
     private LocalDate data_coletada;
