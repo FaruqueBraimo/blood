@@ -64,10 +64,10 @@ public class SangueResource {
     }
 
 
-    @PutMapping("sangue/{codigo}")
+    @PutMapping("sangue")
     @ApiOperation(value="remove um certo dador")
-    public Sangue editar(@PathVariable(value = "codigo") int codigo, @RequestBody Sangue s){
-        sr.save(s);
+    public Sangue editar(@RequestBody Sangue sangue){
+        sr.save(sangue);
         return sangue;
     }
 
