@@ -36,6 +36,10 @@ public class DoacaoResource {
         LocalDate hoje = LocalDate.now().plusMonths(1);
         Triagem triagem = tr.findByCodigo(codigo);
 
+
+        
+
+
        if (doa.size() !=0){
            for(Doacao d : doa){
                if (triagem.getData_triagem().isBefore(d.getTriagem().getData_triagem().plusMonths(3))) {

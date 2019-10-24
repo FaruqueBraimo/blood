@@ -66,9 +66,8 @@ public class SangueResource {
 
     @PutMapping("sangue/{codigo}")
     @ApiOperation(value="remove um certo dador")
-    public Sangue editar(@PathVariable(value = "codigo") int codigo){
-        Sangue sangue = sr.findByCodigo(codigo);
-        sr.save(sangue);
+    public Sangue editar(@PathVariable(value = "codigo") int codigo, @RequestBody Sangue s){
+        sr.save(s);
         return sangue;
     }
 
