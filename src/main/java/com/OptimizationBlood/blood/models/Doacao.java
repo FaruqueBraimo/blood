@@ -19,15 +19,15 @@ public class Doacao {
     @OneToOne
     @JoinColumn(name="triagem_id")
     private Triagem triagem;
+
     @JsonFormat(pattern="yyyy/MM/dd")
-    private LocalDate data_coletada;
+    private LocalDate data_coletada = LocalDate.now();
     
     @JsonFormat(pattern="HH:mm")
-    private LocalTime hora_coletada;
+    private LocalTime hora_coletada = LocalTime.now() ;
     private String volume_coletado;
-    private String Reacao;
-    private String Observacoes;
 
+    private String obs;
 
     public int getCodigo() {
         return codigo;
@@ -77,19 +77,11 @@ public class Doacao {
         this.volume_coletado = volume_coletado;
     }
 
-    public String getReacao() {
-        return Reacao;
+    public String getObs() {
+        return obs;
     }
 
-    public void setReacao(String reacao) {
-        Reacao = reacao;
-    }
-
-    public String getObservacoes() {
-        return Observacoes;
-    }
-
-    public void setObservacoes(String observacoes) {
-        Observacoes = observacoes;
+    public void setObs(String obs) {
+        this.obs = obs;
     }
 }
