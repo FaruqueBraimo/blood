@@ -3,6 +3,7 @@ package com.OptimizationBlood.blood.resources;
 
 import com.OptimizationBlood.blood.models.Agendamento;
 import com.OptimizationBlood.blood.models.Dador;
+import com.OptimizationBlood.blood.models.Doacao;
 import com.OptimizationBlood.blood.models.Triagem;
 import com.OptimizationBlood.blood.repository.AgendamentoRepository;
 import com.OptimizationBlood.blood.repository.DadorRepository;
@@ -40,7 +41,12 @@ public class TriagemResource {
          return triagem;
     }
 
+    @GetMapping("/triagem")
+    public List<Triagem> listar(){
 
+        return tr.findAll();
+
+    }
 
     @GetMapping("triagem/{codigo}")
     @ApiOperation(value="retorna uma certa triagem")
