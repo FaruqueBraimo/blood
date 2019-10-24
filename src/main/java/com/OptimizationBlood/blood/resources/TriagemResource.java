@@ -34,27 +34,13 @@ public class TriagemResource {
 
     @PostMapping("triagem/{codigo}")
     public Triagem guardar(@PathVariable(value = "codigo") int codigo , @RequestBody Triagem triagem){
-        Agendamento agendamento = ar.findByCodigo(codigo);
-        triagem.setAgendamento(agendamento);
+//        Agendamento agendamento = ar.findByCodigo(codigo);
+////        triagem.setAgendamento(agendamento);
         tr.save(triagem);
          return triagem;
     }
 
-    @GetMapping("/triagens")
-    public  String listar(){
 
-        List<Triagem> tra = new ArrayList<>();
-        tra = tr.findAll();
-
-        String nome = null;
-        for ( Triagem d : tra){
-
-            nome = d.getDadores().getEmail();
-
-        }
-
-         return  nome;
-    }
 
     @GetMapping("triagem/{codigo}")
     @ApiOperation(value="retorna uma certa triagem")

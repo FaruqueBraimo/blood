@@ -55,19 +55,21 @@ public class SangueResource {
     }
 
 
-    @DeleteMapping("/sangue")
-    @ApiOperation(value="remove um certo tipo de sanguue")
-    public void deletar(@RequestBody  Sangue sangue){
-
+    @DeleteMapping("sangue/{codigo}")
+    @ApiOperation(value="remove um certo dador")
+    public Sangue deletar(@PathVariable(value = "codigo") int codigo){
+        Sangue sangue = sr.findByCodigo(codigo);
         sr.delete(sangue);
+        return sangue;
     }
 
-    @PutMapping("/sangue")
-    @ApiOperation(value="Edita um certo tipo de sangue")
 
-    public  Sangue editar(@RequestBody Sangue sangue){
-        return sr.save(sangue);
-
+    @PutMapping("sangue/{codigo}")
+    @ApiOperation(value="remove um certo dador")
+    public Sangue editar(@PathVariable(value = "codigo") int codigo){
+        Sangue sangue = sr.findByCodigo(codigo);
+        sr.save(sangue);
+        return sangue;
     }
 
 

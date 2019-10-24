@@ -1,7 +1,9 @@
 package com.OptimizationBlood.blood.models;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -22,12 +24,11 @@ public class Agendamento {
      private String hora;
      private String descricao;
 
-     @ManyToOne
-    @JoinColumn (name = "dador_id")
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "dador_id")
     private Dador dador;
 
-     @OneToMany(mappedBy = "agendamento")
-     private List<Triagem> triagem;
+
 
     public int getCodigo() {
         return codigo;
@@ -77,11 +78,4 @@ public class Agendamento {
         this.dador = dador;
     }
 
-    public List<Triagem> getTriagem() {
-        return triagem;
-    }
-
-    public void setTriagem(List<Triagem> triagem) {
-        this.triagem = triagem;
-    }
 }

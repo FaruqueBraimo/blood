@@ -4,10 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -19,9 +16,9 @@ public class Sangue {
     private  String nome;
     private String Descricao;
 
-    @OneToMany(mappedBy = "sangue")
-    @JsonBackReference
-    private List<Dador> dadores;
+//    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+//    @JoinColumn(name = "sangue_id")
+//    private List<Dador> dadores;
 
     public int getCodigo() {
         return codigo;
@@ -47,11 +44,11 @@ public class Sangue {
         Descricao = descricao;
     }
 
-    public List<Dador> getDadores() {
-        return dadores;
-    }
-
-    public void setDadores(List<Dador> dadores) {
-        this.dadores = dadores;
-    }
+//    public List<Dador> getDadores() {
+//        return dadores;
+//    }
+//
+//    public void setDadores(List<Dador> dadores) {
+//        this.dadores = dadores;
+//    }
 }

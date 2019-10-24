@@ -13,10 +13,6 @@ public class Triagem {
 @GeneratedValue
 private  int codigo;
 private String localColheita;
-
-@ManyToOne()
-@JoinColumn(name = "dador_id")
-private Dador dador;
 private String pressao_arterial;
 private String peso;
 private String altura;
@@ -29,33 +25,6 @@ private String Temperatura;
 @OneToOne(mappedBy = "triagem" )
 private Doacao doacao;
 
-    @ManyToOne
-    @JoinColumn(name = "sangue_id")
-private Agendamento agendamento;
-
-    public Dador getDador() {
-        return dador;
-    }
-
-    public void setDador(Dador dador) {
-        this.dador = dador;
-    }
-
-    public Doacao getDoacao() {
-        return doacao;
-    }
-
-    public void setDoacao(Doacao doacao) {
-        this.doacao = doacao;
-    }
-
-    public Agendamento getAgendamento() {
-        return agendamento;
-    }
-
-    public void setAgendamento(Agendamento agendamento) {
-        this.agendamento = agendamento;
-    }
 
     public int getCodigo() {
         return codigo;
@@ -71,14 +40,6 @@ private Agendamento agendamento;
 
     public void setLocalColheita(String localColheita) {
         this.localColheita = localColheita;
-    }
-
-    public Dador getDadores() {
-        return dador;
-    }
-
-    public void setDadores(Dador dadores) {
-        this.dador = dadores;
     }
 
     public String getPressao_arterial() {
@@ -136,4 +97,14 @@ private Agendamento agendamento;
     public void setTemperatura(String temperatura) {
         Temperatura = temperatura;
     }
+
+    public Doacao getDoacao() {
+        return doacao;
+    }
+
+    public void setDoacao(Doacao doacao) {
+        this.doacao = doacao;
+    }
+
+
 }

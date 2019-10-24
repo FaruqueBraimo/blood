@@ -69,12 +69,13 @@ public class DadorResource {
    }
 
 
-   @PutMapping("/dador")
-   @ApiOperation(value="Edita um certo dador")
-   public  Dador editar(@RequestBody Dador dador){
-        return dr.save(dador);
-
-   }
+    @PutMapping("dador/{codigo}")
+    @ApiOperation(value="remove um certo dador")
+    public Dador editar(@PathVariable(value = "codigo") int codigo){
+        Dador dador = dr.findByCodigo(codigo);
+        dr.save(dador);
+        return dador;
+    }
 
 
     @GetMapping("/d")

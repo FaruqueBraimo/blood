@@ -2,6 +2,7 @@ package com.OptimizationBlood.blood.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -40,9 +41,9 @@ public class Dador  {
     private String email;
 
     @ManyToOne
-    @JsonBackReference
     @JoinColumn(name = "sangue_id")
     private Sangue sangue;
+
     private int numeroDeDoacoes;
     private String nomeMae;
     private String nomePai;
@@ -54,53 +55,66 @@ public class Dador  {
     private String FatorRH;
     @JsonFormat(pattern="yyyy/MM/dd")
     private LocalDate data_nasc;
-
-    public LocalDate getData_nasc() {
-        return data_nasc;
-    }
-
-    public void setData_nasc(LocalDate data_nasc) {
-        this.data_nasc = data_nasc;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
-    public List<Triagem> getTriagem() {
-        return triagem;
-    }
-
-    public void setTriagem(List<Triagem> triagem) {
-        this.triagem = triagem;
-    }
-
-    public List<Agendamento> getAgendamento() {
-        return agendamento;
-    }
-
-    public void setAgendamento(List<Agendamento> agendamento) {
-        this.agendamento = agendamento;
-    }
-
     @OneToOne
     private Usuario usuario;
 
-     @OneToMany(mappedBy = "dador")
-     private  List<Triagem> triagem;
 
 
-    @OneToMany(mappedBy = "dador")
-    private  List<Agendamento> agendamento;
 
+    public Dador() {
 
+    }
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getApelido() {
+        return Apelido;
+    }
+
+    public void setApelido(String apelido) {
+        Apelido = apelido;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
+    public int getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(int telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Sangue getSangue() {
@@ -183,63 +197,20 @@ public class Dador  {
         FatorRH = fatorRH;
     }
 
-
-
-    public Dador() {
-
+    public LocalDate getData_nasc() {
+        return data_nasc;
     }
 
-
-
-
-
-
-    public String getNome() {
-        return nome;
+    public void setData_nasc(LocalDate data_nasc) {
+        this.data_nasc = data_nasc;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public String getApelido() {
-        return Apelido;
-    }
-
-    public void setApelido(String apelido) {
-        Apelido = apelido;
-    }
-
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-
-    public String getSexo() {
-        return sexo;
-    }
-
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
-    }
-
-    public int getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(int telefone) {
-        this.telefone = telefone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
 
