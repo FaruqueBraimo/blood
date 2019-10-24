@@ -27,29 +27,40 @@ public class DoacaoResource {
 
 
     @PostMapping("doacao/{codigo}")
-    public Doacao   guardar(@PathVariable(value = "codigo") int codigo , @RequestBody Doacao doacao) {
+    public Doacao   guardar(@PathVariable(value = "codigo") int codigo , @RequestBody Doacao doacao){
 
 
         List<Doacao> doa = new ArrayList<>();
-        doa = dr.findAll();
+         doa = dr.findAll();
+         LocalDate mesQueVem = LocalDate.now().plusMonths(3);
+        LocalDate hoje = LocalDate.now().plusMonths(1);
+        Triagem triagem = tr.findByCodigo(codigo);
+
+       if (doa.size() !=0){
+           for(Doacao d : doa){
+               if (triagem.getData_triagem().isBefore(d.getTriagem().getData_triagem().plusMonths(3))) {
+                   System.out.println("Ainda nao esta disponivel pra doar sangue");
+               }
+               else{
+                   doacao.setTriagem(triagem);
+                   dr.save(doacao);
+               }
 
 
-        for (Doacao d : doa) {
+           }
+       }
+       else{
+           doacao.setTriagem(triagem);
+           dr.save(doacao);
+           System.out.println("Doacao efetuada");
+       }
 
 
-            Triagem triagem = tr.findByCodigo(codigo);
-            if (triagem.getData_triagem().isBefore(d.getTriagem().getData_triagem().plusMonths(3))) {
-                System.out.println("Ainda nao esta disponivel pra doar sangue");
-            }
-            else{
-                doacao.setTriagem(triagem);
-                dr.save(doacao);
-            }
 
-        }
+
         return doacao;
-
     }
+
     @GetMapping("/doacoes")
     public List<Doacao> listar(){
 
