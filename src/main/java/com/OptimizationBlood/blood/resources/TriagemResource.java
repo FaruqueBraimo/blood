@@ -48,6 +48,15 @@ public class TriagemResource {
 
     }
 
+    @GetMapping("/aptos")
+    public List<Triagem> aptos(){
+        return tr.aptos();
+
+    }
+
+
+
+
     @GetMapping("triagem/{codigo}")
     @ApiOperation(value="retorna uma certa triagem")
 

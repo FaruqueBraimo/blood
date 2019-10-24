@@ -20,7 +20,7 @@ public class Agendamento {
 
     @JsonFormat(pattern="yyyy/MM/dd")
      private LocalDate  data_agendada;
-     private Date data_marcada;
+     private LocalDate data =  LocalDate.now() ;;
      private String hora;
      private String descricao;
 
@@ -46,12 +46,12 @@ public class Agendamento {
         this.data_agendada = data_agendada;
     }
 
-    public Date getData_marcada() {
-        return data_marcada;
+    public LocalDate getData() {
+        return data;
     }
 
-    public void setData_marcada(Date data_marcada) {
-        this.data_marcada = data_marcada;
+    public void setData(LocalDate data_marcada) {
+        this.data = data;
     }
 
     public String getHora() {

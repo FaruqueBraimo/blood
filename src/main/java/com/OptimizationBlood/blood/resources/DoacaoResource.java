@@ -10,6 +10,8 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -25,13 +27,29 @@ public class DoacaoResource {
 
 
     @PostMapping("doacao/{codigo}")
-    public Doacao   guardar(@PathVariable(value = "codigo") int codigo , @RequestBody Doacao doacao){
-        Triagem triagem = tr.findByCodigo(codigo);
-        doacao.setTriagem(triagem);
-        dr.save(doacao);
-        return doacao;
-    }
+    public Doacao   guardar(@PathVariable(value = "codigo") int codigo , @RequestBody Doacao doacao) {
 
+
+        List<Doacao> doa = new ArrayList<>();
+        doa = dr.findAll();
+
+
+        for (Doacao d : doa) {
+
+
+            Triagem triagem = tr.findByCodigo(codigo);
+            if (triagem.getData_triagem().isBefore(d.getTriagem().getData_triagem().plusMonths(3))) {
+                System.out.println("Ainda nao esta disponivel pra doar sangue");
+            }
+            else{
+                doacao.setTriagem(triagem);
+                dr.save(doacao);
+            }
+
+        }
+        return doacao;
+
+    }
     @GetMapping("/doacoes")
     public List<Doacao> listar(){
 

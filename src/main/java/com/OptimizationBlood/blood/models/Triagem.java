@@ -17,11 +17,18 @@ private String pressao_arterial;
 private String peso;
 private String altura;
 private String resultado_triagem;
-
 private LocalDate Data_triagem;
 private String Observacoes;
 private String Temperatura;
+private String status = "apto";
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "agendamento_id")
