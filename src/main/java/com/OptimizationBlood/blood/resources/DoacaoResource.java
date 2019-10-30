@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,42 +28,63 @@ public class DoacaoResource {
 
 
     @PostMapping("doacao/{codigo}")
-    public Doacao   guardar(@PathVariable(value = "codigo") int codigo , @RequestBody Doacao doacao){
+    public String   guardar(@PathVariable(value = "codigo") int codigo , @RequestBody Doacao doacao){
 
 
         List<Doacao> doa = new ArrayList<>();
          doa = dr.findAll();
-         LocalDate mesQueVem = LocalDate.now().plusMonths(3);
-        LocalDate hoje = LocalDate.now().plusMonths(1);
+
+
         Triagem triagem = tr.findByCodigo(codigo);
-
-
+        LocalDate data_coletada = LocalDate.now();
         
 
 
        if (doa.size() !=0){
            for(Doacao d : doa){
-               if (triagem.getData_triagem().isBefore(d.getTriagem().getData_triagem().plusMonths(3))) {
-                   System.out.println("Ainda nao esta disponivel pra doar sangue");
+
+
+               if(d.getTriagem().getAgendamento().getDador().getCodigo() == triagem.getAgendamento().getDador().getCodigo() ){
+
+                   if(d.getStatus().equalsIgnoreCase("nao verificada")) {
+
+
+                       if (doacao.getData_coletada().isBefore(d.getData_coletada().plusMonths(3))) {
+
+
+                            long dias = ChronoUnit.DAYS.between(data_coletada,d.getData_coletada().plusMonths(3));
+                           return "O Dador ainda nao esta disponivel pra doar sangue faltam " + dias + " dias " ;
+
+                       } else {
+                           doacao.setTriagem(triagem);
+                           d.setStatus("efetuada");
+                           dr.save(d);
+
+
+                           dr.save(doacao);
+                           return "Doacao efetuada";
+                       }
+                   }
+
                }
                else{
                    doacao.setTriagem(triagem);
                    dr.save(doacao);
+                   return "Doacao efetuada";
                }
-
 
            }
        }
        else{
            doacao.setTriagem(triagem);
            dr.save(doacao);
-           System.out.println("Doacao efetuada");
+           return "Doacao efetuada";
        }
 
 
 
 
-        return doacao;
+        return "ups";
     }
 
     @GetMapping("/doacoes")

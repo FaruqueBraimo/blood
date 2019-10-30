@@ -23,12 +23,31 @@ public class Agendamento {
      private LocalDate data =  LocalDate.now() ;;
      private String hora;
      private String descricao;
+     private  String status = "por realizar";
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "dador_id")
     private Dador dador;
 
+    @OneToMany( mappedBy = "agendamento", fetch = FetchType.EAGER)
+    private List<Triagem> triagems;
 
+
+    public List<Triagem> getTriagems() {
+        return triagems;
+    }
+
+    public void setTriagems(List<Triagem> triagems) {
+        this.triagems = triagems;
+    }
 
     public int getCodigo() {
         return codigo;

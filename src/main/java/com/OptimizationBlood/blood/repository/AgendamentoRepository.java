@@ -11,8 +11,4 @@ public interface AgendamentoRepository  extends JpaRepository<Agendamento,Intege
     Agendamento findByCodigo(int codigo);
 
 
-
-
-
-
 }

@@ -8,4 +8,8 @@ public interface DoacaoRepository extends JpaRepository<Doacao,Integer> {
 
     Doacao findByCodigo(int codigo);
 
+
+
+
+
 }

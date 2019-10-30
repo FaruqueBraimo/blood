@@ -11,6 +11,8 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,7 +24,8 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 
 public class DadorResource {
-
+    @Autowired
+    private JavaMailSender javaMailSender;
     @Autowired
     private DadorRepository dr;
     @Autowired
@@ -57,6 +60,9 @@ public class DadorResource {
         Sangue sangue = sr.findByCodigo(codigo);
          dador.setSangue(sangue);
         dr.save(dador);
+
+
+
         return dador;
     }
 
@@ -77,13 +83,13 @@ public class DadorResource {
         return dador;
     }
 
-
-    @GetMapping("/d")
-    @ApiOperation(value="Edita um certo dador")
-    public  int pes(){
-        return dr.getDador();
-
-    }
+//
+//    @GetMapping("/d")
+//    @ApiOperation(value="Edita um certo dador")
+//    public  Dador pes(){
+////        return dr.dador(1);
+//
+//    }
 
 
 

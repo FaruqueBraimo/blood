@@ -21,6 +21,7 @@ private LocalDate Data_triagem;
 private String Observacoes;
 private String Temperatura;
 private String status = "apto";
+private  String feito = "nao";
 
     public String getStatus() {
         return status;
@@ -33,6 +34,18 @@ private String status = "apto";
     @ManyToOne(optional = false)
     @JoinColumn(name = "agendamento_id")
     private Agendamento agendamento;
+
+    @OneToMany( mappedBy = "triagem", fetch = FetchType.EAGER)
+    private List<Doacao> doacao;
+
+
+    public List<Doacao> getDoacao() {
+        return doacao;
+    }
+
+    public void setDoacao(List<Doacao> doacao) {
+        this.doacao = doacao;
+    }
 
     public Agendamento getAgendamento() {
         return agendamento;

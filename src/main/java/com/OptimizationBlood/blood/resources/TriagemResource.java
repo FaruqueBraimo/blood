@@ -13,6 +13,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,11 +35,29 @@ public class TriagemResource {
 
 
     @PostMapping("triagem/{codigo}")
-    public Triagem guardar(@PathVariable(value = "codigo") int codigo , @RequestBody Triagem triagem){
+    public String guardar(@PathVariable(value = "codigo") int codigo , @RequestBody Triagem triagem){
         Agendamento agendamento = ar.findByCodigo(codigo);
+        List<Triagem> triagens = new ArrayList<>();
         triagem.setAgendamento(agendamento);
-        tr.save(triagem);
-         return triagem;
+
+
+
+
+            if (agendamento.getData_agendada().isEqual(LocalDate.now()) ){
+
+                triagem.setData_triagem(agendamento.getData_agendada());
+                tr.save(triagem);
+                agendamento.setStatus("realizada");
+
+                ar.save(agendamento);
+                return "Triagem registada";
+            }else {
+                return "Ainda nao chegou a data de triagem";
+
+            }
+
+
+
     }
 
     @GetMapping("/triagem")

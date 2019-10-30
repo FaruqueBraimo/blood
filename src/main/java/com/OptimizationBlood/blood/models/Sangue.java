@@ -16,9 +16,10 @@ public class Sangue {
     private  String nome;
     private String Descricao;
 
-//    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-//    @JoinColumn(name = "sangue_id")
-//    private List<Dador> dadores;
+
+    @OneToMany( mappedBy = "sangue", fetch = FetchType.EAGER)
+    private List<Dador> dador;
+
 
     public int getCodigo() {
         return codigo;
@@ -44,11 +45,11 @@ public class Sangue {
         Descricao = descricao;
     }
 
-//    public List<Dador> getDadores() {
-//        return dadores;
-//    }
-//
-//    public void setDadores(List<Dador> dadores) {
-//        this.dadores = dadores;
-//    }
+    public List<Dador> getDador() {
+        return dador;
+    }
+
+    public void setDador(List<Dador> dadores) {
+        this.dador = dadores;
+    }
 }

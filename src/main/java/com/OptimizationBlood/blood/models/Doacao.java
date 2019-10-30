@@ -16,7 +16,7 @@ public class Doacao {
 
     private String numero_bolsa;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="triagem_id")
     private Triagem triagem;
 
@@ -26,6 +26,16 @@ public class Doacao {
     @JsonFormat(pattern="HH:mm")
     private LocalTime hora_coletada = LocalTime.now() ;
     private String volume_coletado;
+
+    private String status = "nao verificada";
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     private String obs;
 
