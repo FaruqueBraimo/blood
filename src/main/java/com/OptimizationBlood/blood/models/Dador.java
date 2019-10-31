@@ -1,18 +1,20 @@
 package com.OptimizationBlood.blood.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
 @Entity
 @ApiModel(description = "Todos os detalhes sobre o dador . ")
-public class Dador  {
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "codigo")
+public class Dador implements Serializable {
 
     private static final  long serialVersionUID =1L;
 
@@ -42,6 +44,7 @@ public class Dador  {
 
     @ManyToOne
     @JoinColumn(name = "sangue_id")
+//    @JsonManagedReference
     private Sangue sangue;
 
     private int numeroDeDoacoes;
@@ -56,9 +59,11 @@ public class Dador  {
     @JsonFormat(pattern="yyyy/MM/dd")
     private LocalDate data_nasc;
     @OneToOne
+
     private Usuario usuario;
 
     @OneToMany( mappedBy = "dador", fetch = FetchType.EAGER)
+
     private List<Agendamento> agendamentos;
 
     public List<Agendamento> getAgendamentos() {

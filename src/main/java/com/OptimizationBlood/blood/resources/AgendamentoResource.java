@@ -43,7 +43,8 @@ public class AgendamentoResource {
 
         agendamentos = ar.findAll();
 
-
+        String msg = "Ola " + agendamento.getDador().getNome()  + " , Marcaste um agendamento para o dia " +agendamento.getData_agendada()+ " as "
+                + agendamento.getHora() + " , até la "  ;
 
         if (agendamentos.size()!=0) {
 
@@ -68,6 +69,8 @@ public class AgendamentoResource {
                     else {
                         a.setStatus("marcada");
                         ar.save(agendamento);
+                        emailService.sendMail(agendamento.getDador().getEmail(), "Agendamento para doacao", msg);
+
                         return  "agendamento marcado";
                     }
 
@@ -87,9 +90,8 @@ public class AgendamentoResource {
 
                 ar.save(agendamento);
 
-                String msg = "Ola " + agendamento.getDador().getNome()  + " , Marcaste um agendamento para o dia " +agendamento.getData_agendada()+ " as "
-                      + agendamento.getHora() + " , até la "  ;
-//                emailService.sendMail(agendamento.getDador().getEmail(), "Agendamento para doacao", msg);
+
+               emailService.sendMail(agendamento.getDador().getEmail(), "Agendamento para doacao", msg);
 
                 return  "agendamento marcado";
             }

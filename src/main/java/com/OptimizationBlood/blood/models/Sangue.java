@@ -1,14 +1,16 @@
 package com.OptimizationBlood.blood.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
-public class Sangue {
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "codigo")
+public class Sangue implements Serializable {
 
     @Id
     @GeneratedValue
@@ -18,6 +20,7 @@ public class Sangue {
 
 
     @OneToMany( mappedBy = "sangue", fetch = FetchType.EAGER)
+//    @JsonBackReference
     private List<Dador> dador;
 
 
