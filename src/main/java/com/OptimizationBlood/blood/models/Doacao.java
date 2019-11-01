@@ -32,6 +32,15 @@ public class Doacao implements Serializable {
     @JsonFormat(pattern="HH:mm")
     private LocalTime hora_coletada = LocalTime.now() ;
     private String volume_coletado;
+    private LocalDate validade;
+
+    public LocalDate getValidade() {
+        return validade;
+    }
+
+    public void setValidade(LocalDate validade) {
+        this.validade = validade;
+    }
 
     private String status = "nao verificada";
 

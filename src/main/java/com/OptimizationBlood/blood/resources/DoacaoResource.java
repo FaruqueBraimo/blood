@@ -57,6 +57,7 @@ public class DoacaoResource {
 
                        } else {
                            doacao.setTriagem(triagem);
+                           doacao.setValidade(doacao.getValidade().plusDays(45));
                            d.setStatus("efetuada");
                            dr.save(d);
 
@@ -69,6 +70,8 @@ public class DoacaoResource {
                }
                else{
                    doacao.setTriagem(triagem);
+                   doacao.setValidade(doacao.getValidade().plusDays(45));
+
                    dr.save(doacao);
                    return "Doacao efetuada";
                }
@@ -77,7 +80,9 @@ public class DoacaoResource {
        }
        else{
            doacao.setTriagem(triagem);
+           doacao.setValidade(doacao.getValidade().plusDays(45));
            dr.save(doacao);
+
            return "Doacao efetuada";
        }
 
