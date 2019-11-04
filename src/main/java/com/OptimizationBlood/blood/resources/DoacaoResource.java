@@ -34,7 +34,9 @@ public class DoacaoResource {
 
     @PostMapping("doacao/{codigo}")
     public String   guardar(@PathVariable(value = "codigo") int codigo , @RequestBody Doacao doacao){
- List<Doacao> doa = new ArrayList<>();
+
+
+        List<Doacao> doa = new ArrayList<>();
          doa = dr.findAll();
 
 
@@ -90,11 +92,11 @@ public class DoacaoResource {
        }
 
 
-} 
-}
-    
-    
-    
+
+
+        return "ups";
+    }
+
     @GetMapping("/doacoes")
     public List<Doacao> listar(){
 
@@ -104,6 +106,17 @@ public class DoacaoResource {
 
     }
 
+    @GetMapping("doacao/{codigo}")
+    @ApiOperation(value="retorna uma certa doacao")
+
+    public Doacao pesquisar(@PathVariable(value = "codigo") int codigo){
+
+        return dr.findByCodigo(codigo);
+
+
+
+
+    }
 
 
     @DeleteMapping("/doacao")
@@ -122,8 +135,20 @@ public class DoacaoResource {
 
     }
 
-  
+    @PutMapping("/doacao")
+    @ApiOperation(value="Edita uma certa doacao")
+    public  Doacao editar(@RequestBody Doacao doacao){
+        return dr.save(doacao);
 
-   
+    }
+
+    @GetMapping("dadordoacao/{codigo}")
+    @ApiOperation(value="retorna uma  certa doacao")
+
+    public Doacao pesquisarAgendamento(@PathVariable(value = "codigo") int id){
+
+        return dr.doacao(id);
+
+    }
 
 }
