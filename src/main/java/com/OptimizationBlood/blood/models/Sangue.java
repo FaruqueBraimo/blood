@@ -19,9 +19,9 @@ public class Sangue implements Serializable {
     private String Descricao;
 
 
-    @OneToMany( mappedBy = "sangue", fetch = FetchType.EAGER)
-//    @JsonBackReference
-    private List<Dador> dador;
+//    @OneToMany( mappedBy = "sangue", fetch = FetchType.EAGER)
+////    @JsonBackReference
+//    private List<Dador> dador;
 
 
     public int getCodigo() {
@@ -48,11 +48,11 @@ public class Sangue implements Serializable {
         Descricao = descricao;
     }
 
-    public List<Dador> getDador() {
-        return dador;
-    }
-
-    public void setDador(List<Dador> dadores) {
-        this.dador = dadores;
-    }
+//    public List<Dador> getDador() {
+//        return dador;
+//    }
+//
+//    public void setDador(List<Dador> dadores) {
+//        this.dador = dadores;
+//    }
 }

@@ -63,17 +63,17 @@ public class Dador   implements Serializable {
 
     private Usuario usuario;
 
-    @OneToMany( mappedBy = "dador", fetch = FetchType.EAGER)
-
-    private List<Agendamento> agendamentos;
-
-    public List<Agendamento> getAgendamentos() {
-        return agendamentos;
-    }
-
-    public void setAgendamentos(List<Agendamento> agendamentos) {
-        this.agendamentos = agendamentos;
-    }
+//    @OneToMany( mappedBy = "dador", fetch = FetchType.EAGER)
+//
+//    private List<Agendamento> agendamentos;
+//
+//    public List<Agendamento> getAgendamentos() {
+//        return agendamentos;
+//    }
+//
+//    public void setAgendamentos(List<Agendamento> agendamentos) {
+//        this.agendamentos = agendamentos;
+//    }
 
     public Dador() {
 

@@ -42,17 +42,17 @@ private  String feito = "nao";
     @JoinColumn(name = "agendamento_id")
     private Agendamento agendamento;
 
-    @OneToMany( mappedBy = "triagem", fetch = FetchType.EAGER)
-    private List<Doacao> doacao;
+//    @OneToMany( mappedBy = "triagem", fetch = FetchType.EAGER)
+//    private List<Doacao> doacao;
 
-
-    public List<Doacao> getDoacao() {
-        return doacao;
-    }
-
-    public void setDoacao(List<Doacao> doacao) {
-        this.doacao = doacao;
-    }
+//
+//    public List<Doacao> getDoacao() {
+//        return doacao;
+//    }
+//
+//    public void setDoacao(List<Doacao> doacao) {
+//        this.doacao = doacao;
+//    }
 
     public Agendamento getAgendamento() {
         return agendamento;

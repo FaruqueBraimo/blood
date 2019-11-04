@@ -47,25 +47,6 @@ public class SangueResource {
 
     }
 
-    @GetMapping("sang")
-    @ApiOperation(value="retorna um certo tipo de sangue")
-    public String obterdador(){
-
-
-
-        List<Sangue> sangues = new ArrayList<>();
-        sangues = sr.findAll();
-        for (Sangue s : sangues){
-
-
-            for (Dador d : s.getDador()){
-                return  d.getNome();
-            }
-
-        }
-
-            return "null";
-    }
 
     @PostMapping("/sangue")
 
