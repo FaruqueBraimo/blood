@@ -34,9 +34,9 @@ public class DoacaoResource {
 
     @PostMapping("doacao/{codigo}")
     public String   guardar(@PathVariable(value = "codigo") int codigo , @RequestBody Doacao doacao){
-
-         List<Doacao> doa = new ArrayList<>();
+List<Doacao> doa = new ArrayList<>();
          doa = dr.findAll();
+
 
         Triagem triagem = tr.findByCodigo(codigo);
         LocalDate data_coletada = LocalDate.now();
@@ -80,6 +80,17 @@ public class DoacaoResource {
                }
 
            }
+       }
+       else{
+           doacao.setTriagem(triagem);
+           doacao.setValidade(doacao.getValidade().plusDays(45));
+           dr.save(doacao);
+
+           return "Doacao efetuada";
+       }
+
+
+
     }
 
     @GetMapping("/doacoes")
