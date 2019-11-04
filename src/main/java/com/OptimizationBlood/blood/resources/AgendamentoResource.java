@@ -179,7 +179,8 @@ public class AgendamentoResource {
     }
 
 
-     @PutMapping("/agendament")
+     @PutMapping("/adiar")
+    @ApiOperation(value="Edita um  agendamento")
     public String adiar(@RequestBody Agendamento agendamento){
 
 
