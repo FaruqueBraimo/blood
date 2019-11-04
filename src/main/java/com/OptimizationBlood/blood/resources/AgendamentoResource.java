@@ -171,7 +171,7 @@ public class AgendamentoResource {
 
         Agendamento agendamento1 = ar.findByCodigo(agendamento.getCodigo());
         agendamento1.setStatus("cancelado");
-        agendamento1.setDescricao(agendamento.getDescricao);
+        agendamento1.setDescricao(agendamento.getDescricao());
         ar.save(agendamento1);
         return "agendamento cancelado";
 
