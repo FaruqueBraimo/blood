@@ -14,7 +14,7 @@ import java.util.List;
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "codigo")
-public class Dador implements Serializable {
+public class Dador   implements Serializable {
 
     private static final  long serialVersionUID =1L;
 
@@ -233,6 +233,9 @@ public class Dador implements Serializable {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
+
+
+
 
 
 }

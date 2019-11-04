@@ -5,6 +5,7 @@ import com.OptimizationBlood.blood.models.Dador;
 import com.OptimizationBlood.blood.models.Sangue;
 import com.OptimizationBlood.blood.models.Triagem;
 import com.OptimizationBlood.blood.repository.DadorRepository;
+import com.OptimizationBlood.blood.repository.Example;
 import com.OptimizationBlood.blood.repository.SangueRepository;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -83,13 +84,15 @@ public class DadorResource {
         return dador;
     }
 
-//
-//    @GetMapping("/d")
-//    @ApiOperation(value="Edita um certo dador")
-//    public  Dador pes(){
-////        return dr.dador(1);
-//
-//    }
+
+    @GetMapping("/d")
+    @ApiOperation(value="Edita um certo dador")
+    public  void pes(){
+
+        Example example = new Example();
+        example.getMessage();
+
+    }
 
 
 

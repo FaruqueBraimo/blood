@@ -13,8 +13,7 @@ public class Usuario {
     @Id
     @GeneratedValue
     private  int id;
-    @OneToOne
-    private  Privilegios privilegios;
+
     private String password;
     private String email;
     private LocalDate ultima_vez_logado;
@@ -36,14 +35,6 @@ public class Usuario {
     }
 
 
-
-    public Privilegios getPrivilegios() {
-        return privilegios;
-    }
-
-    public void setPrivilegios(Privilegios privilegios) {
-        this.privilegios = privilegios;
-    }
 
     public String getPassword() {
         return password;

@@ -170,7 +170,7 @@ public class AgendamentoResource {
     public String adiar(@RequestBody Agendamento agendamento){
 
 
-        agendamento.setCodigo(ar.procuar(agendamento.getCodigo));
+        agendamento.setCodigo(ar.procuar(agendamento.getCodigo()));
         agendamento.setStatus("adiado");
         ar.save(agendamento);
 
@@ -182,9 +182,9 @@ public class AgendamentoResource {
 
 
      @PutMapping("/cancelar")
-    public adiar cancelar(@RequestBody Agendamento agendamento){
+    public String cancelar(@RequestBody Agendamento agendamento){
 
-        agendamento.setCodigo(ar.procuar(agendamento.getCodigo));
+        agendamento.setCodigo(ar.procuar(agendamento.getCodigo()));
         agendamento.setStatus("cancelado");
         ar.save(agendamento);
 
