@@ -69,7 +69,7 @@ public class AgendamentoResource {
                     else {
                         a.setStatus("marcada");
                         ar.save(agendamento);
-                        emailService.sendMail(agendamento.getDador().getEmail(), "Agendamento para doacao", msg);
+                        emailService.sendMail(agendamento.getDador().getEmail(), " Agendamento para doacaao", msg);
 
                         return  "agendamento marcado";
                     }
@@ -170,7 +170,7 @@ public class AgendamentoResource {
     public Agendamento editar(@RequestBody Agendamento agendamento){
 
         Agendamento agendamento1 = ar.findByCodigo(agendamento.getCodigo());
-        agendamento1.setStatus(agendamento.getStatus());
+        agendamento1.setStatus("cancelado");
         return ar.save(agendamento1);
 
 
