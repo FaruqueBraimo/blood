@@ -135,7 +135,7 @@ public class AgendamentoResource {
     }
 
       @GetMapping("porrealizar")
-    public List<agendamento> agendamentoRealizados(){
+    public List<Agendamento> agendamentos(){
 
         return ar.agendamento();
 
