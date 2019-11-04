@@ -104,8 +104,12 @@ public class TriagemResource {
 
     @PutMapping("/triagem")
     @ApiOperation(value="Edita uma certa triagem")
-    public  Triagem editar(@RequestBody Triagem triagem){
-        return tr.save(triagem);
+    public  String editar(@RequestBody Triagem triagem){
+        Triagem tri = tr.findByCodigo(triagem.getCodigo());
+        tri.setStatus("inapto")
+         tr.save(tri);
+        
+        return "inaptidao registada";
 
     }
 
