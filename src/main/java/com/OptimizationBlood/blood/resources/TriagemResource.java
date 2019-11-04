@@ -106,7 +106,7 @@ public class TriagemResource {
     @ApiOperation(value="Edita uma certa triagem")
     public  String editar(@RequestBody Triagem triagem){
         Triagem tri = tr.findByCodigo(triagem.getCodigo());
-        tri.setStatus("inapto")
+        tri.setStatus("inapto");
          tr.save(tri);
         
         return "inaptidao registada ";
