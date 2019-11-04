@@ -160,7 +160,10 @@ public class AgendamentoResource {
     @PutMapping("/agendamento")
     @ApiOperation(value="Edita um  agendamento")
     public Agendamento editar(@RequestBody Agendamento agendamento){
-        return ar.save(agendamento);
+
+        Agendamento agendamento1 = ar.findByCodigo(agendamento.getCodigo());
+        agendamento1.setStatus(agendamento.getStatus());
+        return ar.save(agendamento1);
 
 
     }
