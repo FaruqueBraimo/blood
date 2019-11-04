@@ -173,9 +173,12 @@ public class AgendamentoResource {
     public String adiar(@RequestBody Agendamento agendamento){
 
 
-        agendamento.setCodigo(ar.procuar(agendamento.getCodigo()));
-        agendamento.setStatus("adiado");
-        ar.save(agendamento);
+
+         Agendamento agendamento1 = ar.findByCodigo(agendamento.getCodigo());
+         agendamento1.setStatus(agendamento.getStatus());
+         agendamento1.setData_agendada(agendamento.getData_agendada());
+         agendamento1.setHora(agendamento.getHora());
+         ar.save(agendamento1);
 
         return  "agendamento adiado";
 
