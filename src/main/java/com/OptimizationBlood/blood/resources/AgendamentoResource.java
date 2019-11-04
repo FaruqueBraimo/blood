@@ -167,11 +167,12 @@ public class AgendamentoResource {
 
     @PutMapping("/agendamento")
     @ApiOperation(value="Edita um  agendamento")
-    public Agendamento editar(@RequestBody Agendamento agendamento){
+    public String editar(@RequestBody Agendamento agendamento){
 
         Agendamento agendamento1 = ar.findByCodigo(agendamento.getCodigo());
         agendamento1.setStatus("cancelado");
-        return ar.save(agendamento1);
+        ar.save(agendamento1);
+        return "agendamento cancelado";
 
 
     }
@@ -182,14 +183,12 @@ public class AgendamentoResource {
 
 
 
-         Agendamento agendamento1 = ar.findByCodigo(agendamento.getCodigo());
-         agendamento1.setStatus(agendamento.getStatus());
-         agendamento1.setData_agendada(agendamento.getData_agendada());
-         agendamento1.setHora(agendamento.getHora());
-         agendamento.setStatus("adiado");
-
-         ar.save(agendamento1);
-
+        Agendamento agendamento1 = ar.findByCodigo(agendamento.getCodigo());
+        agendamento1.setStatus("adiado");
+        agendamento1.setData_agendada(agendamento.getData_agendada());
+        agendamento1.setHora(agendamento.getHora());
+        
+        ar.save(agendamento1);
         return  "agendamento adiado";
 
 
