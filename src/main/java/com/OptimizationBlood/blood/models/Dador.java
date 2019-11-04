@@ -50,6 +50,7 @@ public class Dador   implements Serializable {
     private int numeroDeDoacoes;
     private String nomeMae;
     private String nomePai;
+    private String senha = "1234";
     private String numeroDocumento;
     private String tipoDocumento;
     private String nacionalidade;
@@ -77,6 +78,16 @@ public class Dador   implements Serializable {
     public Dador() {
 
     }
+
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
 
     public String getStatus() {
         return status;
