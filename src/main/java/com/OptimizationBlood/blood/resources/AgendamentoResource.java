@@ -186,8 +186,7 @@ public class AgendamentoResource {
          }
         else{
         agendamento1.setStatus("adiado");
-        agendamento1.setData_agendada(agendamento.getData_agendada());
-        agendamento1.setHora(agendamento.getHora());
+     
         
         ar.save(agendamento1);
         return  "agendamento adiado";
