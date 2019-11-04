@@ -172,6 +172,7 @@ public class AgendamentoResource {
         Agendamento agendamento1 = ar.findByCodigo(agendamento.getCodigo());
 
 
+
          if(agendamento.getData_agendada() == null) 
          
          {
@@ -190,34 +191,12 @@ public class AgendamentoResource {
             
         }
 
-
     }
 
 
-     @PutMapping("/adiar")
-    @ApiOperation(value="Edita um  agendamento")
-    public String adiar(@RequestBody Agendamento agendamento){
-                
+    
 
 
-     
-
-
-    }
-
-
-
-     @PutMapping("/cancelar")
-    public String cancelar(@RequestBody Agendamento agendamento){
-     Agendamento agendamento1 = ar.findByCodigo(agendamento.getCodigo());
-        agendamento1.setCodigo(ar.procuar(agendamento.getCodigo()));
-        agendamento1.setStatus("cancelado");
-        ar.save(agendamento1);
-
-        return  "agendamento cancelado";
-
-
-    }
 
 
 }
