@@ -142,13 +142,6 @@ public class DoacaoResource {
 
     }
 
-    @GetMapping("dadordoacao/{codigo}")
-    @ApiOperation(value="retorna uma  certa doacao")
-
-    public Doacao pesquisarAgendamento(@PathVariable(value = "codigo") int id){
-
-        return dr.doacao(id);
-
-    }
+  
 
 }
