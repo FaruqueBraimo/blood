@@ -181,7 +181,6 @@ public class AgendamentoResource {
         return "Agendamento cancelado";  
          }
         else{
-               Agendamento agendamento1 = ar.findByCodigo(agendamento.getCodigo());
         agendamento1.setStatus("adiado");
         agendamento1.setData_agendada(agendamento.getData_agendada());
         agendamento1.setHora(agendamento.getHora());
