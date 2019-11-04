@@ -172,7 +172,7 @@ public class AgendamentoResource {
         Agendamento agendamento1 = ar.findByCodigo(agendamento.getCodigo());
 
 
-         if(agendamento.getData_agendada().isEmpty()) 
+         if(agendamento.getData_agendada() == null) 
          
          {
         agendamento1.setStatus("cancelado");
