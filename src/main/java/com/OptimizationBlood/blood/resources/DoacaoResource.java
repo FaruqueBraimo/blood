@@ -35,7 +35,11 @@ public class DoacaoResource {
     @PostMapping("doacao/{codigo}")
     public String   guardar(@PathVariable(value = "codigo") int codigo , @RequestBody Doacao doacao){
 
+         List<Doacao> doa = new ArrayList<>();
+         doa = dr.findAll();
 
+        Triagem triagem = tr.findByCodigo(codigo);
+         dr.save(doacao);
       
         return "sucesso";
     }
