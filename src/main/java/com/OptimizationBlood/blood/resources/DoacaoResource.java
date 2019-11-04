@@ -58,11 +58,11 @@ public class DoacaoResource {
 
 
                             long dias = ChronoUnit.DAYS.between(data_coletada,d.getData_coletada().plusMonths(3));
-                           return "O Dador ainda nao esta disponivel pra doar sangue faltam " + dias + " dias " ;
+                           return "O Dador ainda nao esta disponivel pra doar sangue, faltam " + dias + " dias " ;
 
                        } else {
                            doacao.setTriagem(triagem);
-                           doacao.setValidade(doacao.getValidade().plusDays(45));
+                           doacao.setValidade(data_coletada.plusDays(45));
                            d.setStatus("efetuada");
                            dr.save(d);
 
@@ -75,7 +75,7 @@ public class DoacaoResource {
                }
                else{
                    doacao.setTriagem(triagem);
-                   doacao.setValidade(doacao.getValidade().plusDays(45));
+                   doacao.setValidade(data_coletada.plusDays(45));
 
                    dr.save(doacao);
                    return "Doacao efetuada";
@@ -85,7 +85,7 @@ public class DoacaoResource {
        }
        else{
            doacao.setTriagem(triagem);
-           doacao.setValidade(doacao.getValidade().plusDays(45));
+           doacao.setValidade(data_coletada.plusDays(45));
            dr.save(doacao);
 
            return "Doacao efetuada";
@@ -135,6 +135,20 @@ public class DoacaoResource {
 
     }
 
+    @PutMapping("/doacao")
+    @ApiOperation(value="Edita uma certa doacao")
+    public  Doacao editar(@RequestBody Doacao doacao){
+        return dr.save(doacao);
 
+    }
+
+    @GetMapping("dadordoacao/{codigo}")
+    @ApiOperation(value="retorna uma  certa doacao")
+
+    public Doacao pesquisarAgendamento(@PathVariable(value = "codigo") int id){
+
+        return dr.doacao(id);
+
+    }
 
 }
