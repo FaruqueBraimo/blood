@@ -109,7 +109,7 @@ public class TriagemResource {
         tri.setStatus("inapto")
          tr.save(tri);
         
-        return "inaptidao registada";
+        return "inaptidao registada ";
 
     }
 
