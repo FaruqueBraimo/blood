@@ -173,7 +173,7 @@ public class AgendamentoResource {
         agendamento1.setStatus("cancelado");
         agendamento1.setDescricao(agendamento.getDescricao());
         ar.save(agendamento1);
-        return "agendamento cancelado";
+        return "Agendamento cancelado";
 
 
     }
