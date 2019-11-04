@@ -46,7 +46,7 @@ public class Dador implements Serializable {
     @JoinColumn(name = "sangue_id")
 //    @JsonManagedReference
     private Sangue sangue;
-
+    private  String status = "nao confirmado";
     private int numeroDeDoacoes;
     private String nomeMae;
     private String nomePai;
@@ -76,6 +76,14 @@ public class Dador implements Serializable {
 
     public Dador() {
 
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public static long getSerialVersionUID() {

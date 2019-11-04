@@ -11,4 +11,25 @@ public interface AgendamentoRepository  extends JpaRepository<Agendamento,Intege
     Agendamento findByCodigo(int codigo);
 
 
+
+    @Query(value = "select count(*) from agendamento", nativeQuery = true)
+    String contagem();
+
+
+
+    @Query(value = "select count(*) from agendamento where status = 'realizada' ", nativeQuery = true)
+    String realizados();
+
+
+    @Query(value = "select * from agendamento where dador_codigo =  ?1 and  status = 'por realizar' ", nativeQuery = true)
+    int procuar( int codigo );
+
+
+
+    @Query(value = "select * from agendamento where dador_codigo =  ?1", nativeQuery = true)
+    Agendamento agendamentoDador( int codigo );
+
+
+
+
 }

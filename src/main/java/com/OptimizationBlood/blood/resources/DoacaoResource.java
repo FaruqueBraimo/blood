@@ -1,6 +1,7 @@
 package com.OptimizationBlood.blood.resources;
 
 
+import com.OptimizationBlood.blood.models.Agendamento;
 import com.OptimizationBlood.blood.models.Dador;
 import com.OptimizationBlood.blood.models.Doacao;
 import com.OptimizationBlood.blood.models.Triagem;
@@ -25,6 +26,10 @@ public class DoacaoResource {
 
     @Autowired
     private DoacaoRepository dr;
+
+
+
+
 
 
     @PostMapping("doacao/{codigo}")
@@ -137,6 +142,13 @@ public class DoacaoResource {
 
     }
 
+    @GetMapping("dadordoacao/{codigo}")
+    @ApiOperation(value="retorna uma  certa doacao")
 
+    public Doacao pesquisarAgendamento(@PathVariable(value = "codigo") int id){
+
+        return dr.doacao(id);
+
+    }
 
 }

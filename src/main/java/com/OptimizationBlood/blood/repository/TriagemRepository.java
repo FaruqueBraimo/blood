@@ -19,4 +19,14 @@ public interface TriagemRepository extends JpaRepository<Triagem,Integer> {
     List<Triagem> inaptos();
 
 
+
+    @Query(value = "select count(*) from triagem where status = 'inapto'", nativeQuery = true)
+       String  conInaptos();
+
+
+
+
+    @Query(value = "select count(*) from triagem where status = 'inapto'", nativeQuery = true)
+       String  procurar();
+
 }
