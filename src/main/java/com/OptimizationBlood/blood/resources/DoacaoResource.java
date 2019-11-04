@@ -39,9 +39,47 @@ public class DoacaoResource {
          doa = dr.findAll();
 
         Triagem triagem = tr.findByCodigo(codigo);
-         dr.save(doacao);
-      
-        return "sucesso";
+        LocalDate data_coletada = LocalDate.now();
+        
+
+
+       if (doa.size() !=0){
+           for(Doacao d : doa){
+
+
+               if(d.getTriagem().getAgendamento().getDador().getCodigo() == triagem.getAgendamento().getDador().getCodigo() ){
+
+                   if(d.getStatus().equalsIgnoreCase("nao verificada")) {
+
+
+                       if (doacao.getData_coletada().isBefore(d.getData_coletada().plusMonths(3))) {
+
+
+                            long dias = ChronoUnit.DAYS.between(data_coletada,d.getData_coletada().plusMonths(3));
+                           return "O Dador ainda nao esta disponivel pra doar sangue faltam " + dias + " dias " ;
+
+                       } else {
+                           doacao.setTriagem(triagem);
+                           doacao.setValidade(doacao.getValidade().plusDays(45));
+                           d.setStatus("efetuada");
+                           dr.save(d);
+
+
+                           dr.save(doacao);
+                           return "Doacao efetuada";
+                       }
+                   }
+
+               }
+               else{
+                   doacao.setTriagem(triagem);
+                   doacao.setValidade(doacao.getValidade().plusDays(45));
+
+                   dr.save(doacao);
+                   return "Doacao efetuada";
+               }
+
+           }
     }
 
     @GetMapping("/doacoes")
