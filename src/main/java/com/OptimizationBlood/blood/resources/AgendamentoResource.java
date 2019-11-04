@@ -134,6 +134,14 @@ public class AgendamentoResource {
 
     }
 
+      @GetMapping("porrealizar")
+    public List<agendamento> agendamentoRealizados(){
+
+        return ar.agendamento();
+
+    }
+
+
 
     @GetMapping("dadoragendamento/{codigo}")
     @ApiOperation(value="retorna um cert agendamento")
@@ -178,6 +186,8 @@ public class AgendamentoResource {
          agendamento1.setStatus(agendamento.getStatus());
          agendamento1.setData_agendada(agendamento.getData_agendada());
          agendamento1.setHora(agendamento.getHora());
+         agendamento.setStatus("adiado");
+
          ar.save(agendamento1);
 
         return  "agendamento adiado";
@@ -189,10 +199,10 @@ public class AgendamentoResource {
 
      @PutMapping("/cancelar")
     public String cancelar(@RequestBody Agendamento agendamento){
-
-        agendamento.setCodigo(ar.procuar(agendamento.getCodigo()));
-        agendamento.setStatus("cancelado");
-        ar.save(agendamento);
+     Agendamento agendamento1 = ar.findByCodigo(agendamento.getCodigo());
+        agendamento1.setCodigo(ar.procuar(agendamento.getCodigo()));
+        agendamento1.setStatus("cancelado");
+        ar.save(agendamento1);
 
         return  "agendamento cancelado";
 
