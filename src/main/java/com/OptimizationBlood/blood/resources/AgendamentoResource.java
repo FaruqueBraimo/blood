@@ -171,7 +171,8 @@ public class AgendamentoResource {
 
         Agendamento agendamento1 = ar.findByCodigo(agendamento.getCodigo());
 
-
+    String msg = "Ola " + agendamento.getDador().getNome()  + " , O agendamnento marcado para o dia  " +agendamento.getData_agendada()+ " as "
+                + agendamento.getHora() + " , foi cancelado "  ;
 
          if(agendamento.getData_agendada() == null) 
          
@@ -179,6 +180,8 @@ public class AgendamentoResource {
         agendamento1.setStatus("cancelado");
         agendamento1.setDescricao(agendamento.getDescricao());
         ar.save(agendamento1);
+        emailService.sendMail(agendamento.getDador().getEmail(), "Cancelamento de agendamento", msg);
+
         return "Agendamento cancelado";  
          }
         else{
