@@ -27,7 +27,7 @@ public class AgendamentoResource {
     private EmailService emailService;
 
     @Autowired
-     private   AgendamentoRepository ar;
+    private   AgendamentoRepository ar;
 
     @PostMapping("agendamento/{codigo}")
     public String guardar(@PathVariable(value = "codigo") int codigo , @RequestBody Agendamento agendamento){
@@ -36,7 +36,7 @@ public class AgendamentoResource {
         agendamento.setDador(dador);
 
 
-         LocalDate hoje = LocalDate.now();
+        LocalDate hoje = LocalDate.now();
 
 
         List<Agendamento> agendamentos = new ArrayList<>();
@@ -69,7 +69,7 @@ public class AgendamentoResource {
                     else {
                         a.setStatus("marcada");
                         ar.save(agendamento);
-                        emailService.sendMail(agendamento.getDador().getEmail(), "Agendamento para doacao", msg);
+                        emailService.sendMail(agendamento.getDador().getEmail(), " Agendamento para doacaao", msg);
 
                         return  "agendamento marcado";
                     }
@@ -91,7 +91,7 @@ public class AgendamentoResource {
                 ar.save(agendamento);
 
 
-               emailService.sendMail(agendamento.getDador().getEmail(), "Agendamento para doacao", msg);
+                emailService.sendMail(agendamento.getDador().getEmail(), "Agendamento para doacao", msg);
 
                 return  "agendamento marcado";
             }
@@ -102,7 +102,7 @@ public class AgendamentoResource {
 
 
 
-      return  "";
+        return  "";
     }
 
     @GetMapping("/agendamento")
@@ -134,7 +134,7 @@ public class AgendamentoResource {
 
     }
 
-      @GetMapping("porrealizar")
+    @GetMapping("porrealizar")
     public List<Agendamento> agendamentos(){
 
         return ar.agendamento();
@@ -167,47 +167,38 @@ public class AgendamentoResource {
 
     @PutMapping("/agendamento")
     @ApiOperation(value="Edita um  agendamento")
-    public Agendamento editar(@RequestBody Agendamento agendamento){
+    public String editar(@RequestBody Agendamento agendamento){
 
         Agendamento agendamento1 = ar.findByCodigo(agendamento.getCodigo());
-        agendamento1.setStatus(agendamento.getStatus());
-        return ar.save(agendamento1);
+
+        String msg = "Ola " + agendamento.getDador().getNome()  + " , O agendamnento marcado para o dia  " +agendamento.getData_agendada()+ " as "
+                + agendamento.getHora() + " , foi cancelado "  ;
+
+        if(agendamento.getData_agendada() == null)
+
+        {
+            agendamento1.setStatus("cancelado");
+            agendamento1.setDescricao(agendamento.getDescricao());
+            ar.save(agendamento1);
+            emailService.sendMail(agendamento.getDador().getEmail(), "Cancelamento de agendamento", msg);
+
+            return "Agendamento cancelado";
+        }
+        else{
+            agendamento1.setStatus("adiado");
 
 
-    }
+            ar.save(agendamento1);
+            return  "agendamento adiado";
 
-
-     @PutMapping("/adiar")
-    public String adiar(@RequestBody Agendamento agendamento){
-
-
-
-         Agendamento agendamento1 = ar.findByCodigo(agendamento.getCodigo());
-         agendamento1.setStatus(agendamento.getStatus());
-         agendamento1.setData_agendada(agendamento.getData_agendada());
-         agendamento1.setHora(agendamento.getHora());
-         agendamento.setStatus("adiado");
-
-         ar.save(agendamento1);
-
-        return  "agendamento adiado";
-
-
-    }
-
-
-
-     @PutMapping("/cancelar")
-    public String cancelar(@RequestBody Agendamento agendamento){
-     Agendamento agendamento1 = ar.findByCodigo(agendamento.getCodigo());
-        agendamento1.setCodigo(ar.procuar(agendamento.getCodigo()));
-        agendamento1.setStatus("cancelado");
-        ar.save(agendamento1);
-
-        return  "agendamento cancelado";
-
+        }
 
     }
+
+
+
+
+
 
 
 }

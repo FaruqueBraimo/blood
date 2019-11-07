@@ -14,6 +14,8 @@ public interface DadorRepository extends JpaRepository<Dador,Integer>{
 //    Dador dador(long codigo);
 //
 
+    @Query(value = "select * from dador where codigo =  ?1", nativeQuery = true)
+    Dador buscar(long codigo);
 
 
 }

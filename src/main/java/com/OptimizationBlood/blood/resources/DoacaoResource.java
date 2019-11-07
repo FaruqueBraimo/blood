@@ -58,11 +58,18 @@ public class DoacaoResource {
 
 
                             long dias = ChronoUnit.DAYS.between(data_coletada,d.getData_coletada().plusMonths(3));
-                           return "O Dador ainda nao esta disponivel pra doar sangue faltam " + dias + " dias " ;
+                           return "O Dador ainda nao esta disponivel pra doar sangue, faltam " + dias + " dias " ;
 
                        } else {
                            doacao.setTriagem(triagem);
-                           doacao.setValidade(doacao.getValidade().plusDays(45));
+                           doacao.setValidade(data_coletada.plusDays(45));
+                           if (doacao.getValidade().isAfter(LocalDate.now())){
+
+                               doacao.setExpirado("Fora do prazo");
+                           }
+                           else {
+                               doacao.setExpirado("Dentro do Prazo");
+                           }
                            d.setStatus("efetuada");
                            dr.save(d);
 
@@ -75,8 +82,14 @@ public class DoacaoResource {
                }
                else{
                    doacao.setTriagem(triagem);
-                   doacao.setValidade(doacao.getValidade().plusDays(45));
+                   doacao.setValidade(data_coletada.plusDays(45));
+                   if (doacao.getValidade().isAfter(LocalDate.now())){
 
+                       doacao.setExpirado("Fora do prazo");
+                   }
+                   else {
+                       doacao.setExpirado("Dentro do Prazo");
+                   }
                    dr.save(doacao);
                    return "Doacao efetuada";
                }
@@ -85,7 +98,14 @@ public class DoacaoResource {
        }
        else{
            doacao.setTriagem(triagem);
-           doacao.setValidade(doacao.getValidade().plusDays(45));
+           doacao.setValidade(data_coletada.plusDays(45));
+           if (doacao.getValidade().isAfter(LocalDate.now())){
+
+               doacao.setExpirado("Fora do prazo");
+           }
+           else {
+               doacao.setExpirado("Dentro do Prazo");
+           }
            dr.save(doacao);
 
            return "Doacao efetuada";
@@ -101,7 +121,6 @@ public class DoacaoResource {
     public List<Doacao> listar(){
 
         return dr.findAll();
-
 
 
     }

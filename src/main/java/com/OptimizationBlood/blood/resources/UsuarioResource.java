@@ -1,20 +1,60 @@
 package com.OptimizationBlood.blood.resources;
 
+import com.OptimizationBlood.blood.models.Sangue;
+import com.OptimizationBlood.blood.models.Sms;
 import com.OptimizationBlood.blood.models.Usuario;
+import com.OptimizationBlood.blood.repository.SangueRepository;
 import com.OptimizationBlood.blood.repository.UsuarioRepository;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+@RestController
+@RequestMapping( value = "api")
+@CrossOrigin("*")
 
 public class UsuarioResource  {
 
 @Autowired
 UsuarioRepository us;
 
-    @GetMapping("usuarios")
-    public List<Usuario> u(){
-        return us.findAll();
+
+
+
+
+        @GetMapping("/usuario")
+        public List<Usuario> listar(){
+
+            return us.findAll();
+
+        }
+
+
+
+        @PostMapping("/usuario")
+
+        public Usuario guardar(@RequestBody Usuario usuario){
+
+            return us.save(usuario);
+        }
+
+
+
+
+
+
+        @PutMapping("usuario")
+        @ApiOperation(value="remove um certo dador")
+        public Usuario editar(@RequestBody Usuario usuario){
+        return     us.save(usuario);
+
+        }
+
+
 
     }
 
@@ -22,4 +62,4 @@ UsuarioRepository us;
 
 
 
-}
+

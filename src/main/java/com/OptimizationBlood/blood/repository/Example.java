@@ -17,7 +17,7 @@ public class Example {
         public void getMessage() {
         Twilio.init(ACCOUNT_SID, AUTH_ID);
 
-        Message message = Message.creator(new PhoneNumber("+258843764793"),
+        Message message = Message.creator(new PhoneNumber("848828452"),
                 new PhoneNumber("+258846771216"),
                 "This is the ship that made the Kessel Run in fourteen parsecs?").create();
 

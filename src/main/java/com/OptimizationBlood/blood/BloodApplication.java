@@ -31,7 +31,7 @@ public class BloodApplication {
 
 
 	public void run(ApplicationArguments arg0) throws Exception {
-		Message.creator(new PhoneNumber("+258846771216"), new PhoneNumber("+258843764793"),
+		Message.creator(new PhoneNumber("25848828452"), new PhoneNumber("258846771216"),
 				"Message from Spring Boot Application").create();
 	}
 	public static void main(String[] args) {

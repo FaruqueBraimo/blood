@@ -46,11 +46,11 @@ public class Dador   implements Serializable {
     @JoinColumn(name = "sangue_id")
 //    @JsonManagedReference
     private Sangue sangue;
-    private  String status = "nao confirmado";
+    private  String status ;
     private int numeroDeDoacoes;
     private String nomeMae;
     private String nomePai;
-    private String senha = "1234";
+    private String senha  ;
     private String numeroDocumento;
     private String tipoDocumento;
     private String nacionalidade;

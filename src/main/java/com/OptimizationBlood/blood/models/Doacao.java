@@ -34,6 +34,16 @@ public class Doacao implements Serializable {
     private String volume_coletado;
     private LocalDate validade;
 
+    private String expirado;
+
+    public String getExpirado() {
+        return expirado;
+    }
+
+    public void setExpirado(String expirado) {
+        this.expirado = expirado;
+    }
+
     public LocalDate getValidade() {
         return validade;
     }

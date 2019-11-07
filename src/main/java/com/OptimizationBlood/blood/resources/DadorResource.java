@@ -16,6 +16,8 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 
@@ -51,23 +53,35 @@ public class DadorResource {
 
     public Dador listarDadorUnico(@PathVariable(value = "codigo") long codigo){
 
-        return dr.findByCodigo(codigo);
+        return dr.buscar(codigo);
 
     }
 
     @PostMapping("dador/{codigo}")
-    public Dador guardar(@PathVariable(value = "codigo") int codigo , @RequestBody Dador  dador){
+    public String guardar(@PathVariable(value = "codigo") int codigo , @RequestBody Dador  dador){
 
         Sangue sangue = sr.findByCodigo(codigo);
-         dador.setSangue(sangue);
-        dr.save(dador);
+
+        long idade = ChronoUnit.YEARS.between(dador.getData_nasc(),LocalDate.now());
 
 
+        if ( (idade > 18)  && (idade < 65)){
 
-        return dador;
+            dador.setSenha(dador.getTipoDocumento());
+            dador.setSangue(sangue);
+            dr.save(dador);
+
+            return  "Dador gravado ";
+
+
+        }else{
+            return "A idade do dador deve estar compreendida ente 18 a 65";
+        }
+
+
     }
 
-    @DeleteMapping("dador/{codigo}")
+    @DeleteMapping("dadores/{codigo}")
    @ApiOperation(value="remove um certo dador")
    public Dador deletar(@PathVariable(value = "codigo") int codigo){
         Dador dador = dr.findByCodigo(codigo);
@@ -87,10 +101,9 @@ public class DadorResource {
 
     @GetMapping("/d")
     @ApiOperation(value="Edita um certo dador")
-    public  void pes(){
+    public  Dador pes(){
 
-        Example example = new Example();
-        example.getMessage();
+       return dr.buscar(1);
 
     }
 

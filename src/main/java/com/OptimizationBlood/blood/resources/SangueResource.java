@@ -3,7 +3,9 @@ package com.OptimizationBlood.blood.resources;
 
 import com.OptimizationBlood.blood.models.Dador;
 import com.OptimizationBlood.blood.models.Sangue;
+import com.OptimizationBlood.blood.models.Sms;
 import com.OptimizationBlood.blood.repository.DadorRepository;
+import com.OptimizationBlood.blood.repository.Example;
 import com.OptimizationBlood.blood.repository.SangueRepository;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -64,6 +66,15 @@ public class SangueResource {
         sr.delete(sangue);
         return sangue;
     }
+
+    @GetMapping("sms")
+    public String u(){
+        Sms x = new Sms();
+        x.sms();
+
+        return  "mensagem enviada";
+    }
+
 
 
     @PutMapping("sangue")
