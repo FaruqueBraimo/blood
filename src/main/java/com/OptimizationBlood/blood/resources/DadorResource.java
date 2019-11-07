@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -48,7 +49,7 @@ public class DadorResource {
 
     }
 
-    @GetMapping("dador/{codigo}")
+    @GetMapping("dadores/{codigo}")
     @ApiOperation(value="retorna um certo dador")
 
     public Dador listarDadorUnico(@PathVariable(value = "codigo") long codigo){
@@ -99,12 +100,29 @@ public class DadorResource {
     }
 
 
-    @GetMapping("/d")
-    @ApiOperation(value="Edita um certo dador")
-    public  Dador pes(){
+    @PostMapping ("/login")
 
-       return dr.buscar(1);
+    public String entrar( @RequestBody Dador  dador){
 
+        List<Dador> dador2 = new ArrayList<>();
+        dador2 = dr.findAll();
+
+        for (Dador dador1 :dador2 ){
+
+            if ((dador.getSenha().equals(dador1.getSenha()))  && (dador.getEmail().equals(dador1.getEmail()))  ) {
+
+
+              return Long.toString(dador1.getCodigo());
+
+
+            }
+            else {
+                return "senha incorreta";
+
+            }
+        }
+
+        return "";
     }
 
 

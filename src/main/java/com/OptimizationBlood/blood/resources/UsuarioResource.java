@@ -1,5 +1,6 @@
 package com.OptimizationBlood.blood.resources;
 
+import com.OptimizationBlood.blood.models.Dador;
 import com.OptimizationBlood.blood.models.Sangue;
 import com.OptimizationBlood.blood.models.Sms;
 import com.OptimizationBlood.blood.models.Usuario;
@@ -12,6 +13,7 @@ import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 @RestController
 @RequestMapping( value = "api")
@@ -23,6 +25,30 @@ public class UsuarioResource  {
 UsuarioRepository us;
 
 
+    @PostMapping ("/entrar")
+
+    public String entrar( @RequestBody Usuario usuario){
+
+        List<Usuario> Usuario2 = new ArrayList<>();
+        Usuario2 = us.findAll();
+
+        for (Usuario usuario1 :Usuario2 ){
+
+            if ((usuario.getPassword().equals(usuario1.getPassword()))  && (usuario.getEmail().equals(usuario1.getEmail()))  ) {
+
+
+                return Long.toString(usuario1.getId());
+
+
+            }
+            else {
+                return "senha incorreta";
+
+            }
+        }
+
+        return "";
+    }
 
 
 
