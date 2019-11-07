@@ -11,8 +11,7 @@ public interface DoacaoRepository extends JpaRepository<Doacao,Integer> {
     Doacao findByCodigo(int codigo);
 
 
-    @Query(value = "select * from doacao where dador_codigo =  ?1", nativeQuery = true)
-    Doacao doacao(int codigo );
+
 
 
 

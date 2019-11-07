@@ -70,6 +70,7 @@ public class DoacaoResource {
                            else {
                                doacao.setExpirado("Dentro do Prazo");
                            }
+
                            d.setStatus("efetuada");
                            dr.save(d);
 
@@ -83,7 +84,7 @@ public class DoacaoResource {
                else{
                    doacao.setTriagem(triagem);
                    doacao.setValidade(data_coletada.plusDays(45));
-                   if (doacao.getValidade().isAfter(LocalDate.now())){
+                 if (doacao.getValidade().isAfter(LocalDate.now())){
 
                        doacao.setExpirado("Fora do prazo");
                    }
@@ -106,6 +107,7 @@ public class DoacaoResource {
            else {
                doacao.setExpirado("Dentro do Prazo");
            }
+
            dr.save(doacao);
 
            return "Doacao efetuada";
@@ -161,13 +163,6 @@ public class DoacaoResource {
 
     }
 
-    @GetMapping("dadordoacao/{codigo}")
-    @ApiOperation(value="retorna uma  certa doacao")
-
-    public Doacao pesquisarAgendamento(@PathVariable(value = "codigo") int id){
-
-        return dr.doacao(id);
-
-    }
+  
 
 }
