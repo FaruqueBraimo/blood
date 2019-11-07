@@ -25,8 +25,7 @@ public class UsuarioResource  {
 UsuarioRepository us;
 
 
-    @PostMapping ("/entrar")
-
+    @PostMapping ("log")
     public String entrar( @RequestBody Usuario usuario){
 
         List<Usuario> Usuario2 = new ArrayList<>();
