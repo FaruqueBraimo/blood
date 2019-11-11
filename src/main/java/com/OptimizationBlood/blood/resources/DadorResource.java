@@ -68,7 +68,6 @@ public class DadorResource {
 
         if ( (idade > 18)  && (idade < 65)){
 
-            dador.setSenha(dador.getTipoDocumento());
             dador.setSangue(sangue);
             dr.save(dador);
 
