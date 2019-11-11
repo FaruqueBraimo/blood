@@ -110,14 +110,6 @@ public class AgendamentoResource {
         return ar.findAll();
     }
 
-    @GetMapping("agendamento/{codigo}")
-    @ApiOperation(value="retorna um cert agendamento")
-
-    public Agendamento pesquisar(@PathVariable(value = "codigo") int id){
-
-        return ar.findByCodigo(id);
-
-    }
 
 
     @GetMapping("contagem")
