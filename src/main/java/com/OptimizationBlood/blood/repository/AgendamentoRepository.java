@@ -31,7 +31,7 @@ public interface AgendamentoRepository  extends JpaRepository<Agendamento,Intege
     List<Agendamento> agendamento( );
 
 
-    @Query(value = "select data from agendamento", nativeQuery = true)
+    @Query(value = "select a.data from agendamento a", nativeQuery = true)
     Agendamento agendamentoDador( int codigo );
 
 
