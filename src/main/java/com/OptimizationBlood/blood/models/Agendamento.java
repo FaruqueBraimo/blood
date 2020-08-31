@@ -38,18 +38,6 @@ public class Agendamento implements Serializable {
     @ManyToOne(optional = false)
     @JoinColumn(name = "dador_id")
     private Dador dador;
-//
-//    @OneToMany( mappedBy = "agendamento", fetch = FetchType.EAGER)
-//    private List<Triagem> triagems;
-//
-//
-//    public List<Triagem> getTriagems() {
-//        return triagems;
-//    }
-//
-//    public void setTriagems(List<Triagem> triagems) {
-//        this.triagems = triagems;
-//    }
 
     public int getCodigo() {
         return codigo;
