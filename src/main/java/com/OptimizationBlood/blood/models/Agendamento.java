@@ -26,8 +26,19 @@ public class Agendamento implements Serializable {
      private String hora;
      private String descricao;
      private  String status = "por realizar";
+     private  boolean  conf  = false;
 
-    public String getStatus() {
+
+    public boolean getConf() {
+        return conf;
+    }
+
+    public void setStatus( boolean conf) {
+        this.conf = conf;
+    }
+        
+        
+         public String getStatus() {
         return status;
     }
 
