@@ -70,6 +70,7 @@ public class AgendamentoResource {
                         a.setStatus("marcada");
                         ar.save(agendamento);
 //                         emailService.sendMail(agendamento.getDador().getEmail(), " Agendamento para ", msg);
+                           a.setStatus("marcada");
 
                         return  "agendamento marcado";
                     }
