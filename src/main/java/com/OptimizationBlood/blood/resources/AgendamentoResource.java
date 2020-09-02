@@ -44,15 +44,15 @@ public class AgendamentoResource {
 
         agendamentos = ar.findAll();
 
-        String msg = "Ola " + agendamento.getDador().getNome()  + " , Marcaste um agendamento para o dia " +agendamento.getData_agendada()+ " as "
-                + agendamento.getHora() + " , até la "  ;
+        String msg = "Ola " + agendamento.getDador().getNome()  + " , Tem um agendamento para o dia " +agendamento.getData_agendada()+ " as "
+                + agendamento.getHora() + " , Entre no Sistema para confirmar ou recusar "  ;
 
         if (agendamentos.size()!=0) {
 
             for (Agendamento a : agendamentos) {
 
 
-                if ( (a.getDador().getCodigo() == dador.getCodigo()) && a.getStatus().equalsIgnoreCase("nao marcada")) {
+                if ( (a.getDador().getCodigo() == dador.getCodigo()) && a.getStatus().equalsIgnoreCase("marcada")) {
 
 
 
