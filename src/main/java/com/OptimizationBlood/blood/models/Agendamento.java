@@ -25,7 +25,7 @@ public class Agendamento implements Serializable {
      private LocalDate data =  LocalDate.now() ;;
      private String hora;
      private String descricao;
-     private  String status = "por realizar";
+     private  String status = "marcada";
      private  boolean  conf  = false;
 
 
