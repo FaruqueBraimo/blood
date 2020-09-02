@@ -142,16 +142,26 @@ public class AgendamentoResource {
         return ar.agendamento();
 
     }
+    
+//   @DeleteMapping("sangue/{codigo}")
+//     @ApiOperation(value="remove um certo dador")
+//     public Sangue deletar(@PathVariable(value = "codigo") int codigo){
+//     Agendamento agendamento1 = ar.findByCodigo(codigo);
+
+//         sr.delete(sangue);
+//         return sangue;
+//     }
 
 
 
-
-    @DeleteMapping("/agendamento")
+    @DeleteMapping("/agendamento/{codigo}")
     @ApiOperation(value="remove uma certo agendamento")
-    public String deletar(@RequestBody  Agendamento agendamento){
+    public String deletar(@PathVariable(value = "codigo") int codigo){
+    Agendamento agendamento1 = ar.findByCodigo(codigo);
 
         try {
-            ar.delete(agendamento);
+            
+            ar.delete(agendamento1);
             return "agendamento removido";
         } catch (Exception e){
             return "Algo inexperado aconteceu";
