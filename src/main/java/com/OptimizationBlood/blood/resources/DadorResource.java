@@ -89,11 +89,13 @@ public class DadorResource {
         return dador;
    }
 
-
-    @PutMapping("dador/{codigo}")
+//  public Sangue editar(@RequestBody Sangue sangue){
+//         sr.save(sangue);
+//         return sangue;
+//     }
+    @PutMapping("dador")
     @ApiOperation(value="remove um certo dador")
-    public Dador editar(@PathVariable(value = "codigo") int codigo){
-        Dador dador = dr.findByCodigo(codigo);
+    public Dador editar((@RequestBody  Dador dador){
         dr.save(dador);
         return dador;
     }
