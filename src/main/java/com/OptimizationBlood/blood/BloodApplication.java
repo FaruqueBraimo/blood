@@ -20,8 +20,8 @@ import com.twilio.type.PhoneNumber;
 @SpringBootApplication
 public class BloodApplication {
 
-	private final static String ACCOUNT_SID = "ACf25404fa3da4d4986df7523deed096a0";
-	private final static String AUTH_ID = "5c7fbbf758ecf6abdfaa2447affee243";
+	private final static String ACCOUNT_SID = "Your Accound_Sid";
+	private final static String AUTH_ID = "Your Auth_ID";
 
 
 	static {
